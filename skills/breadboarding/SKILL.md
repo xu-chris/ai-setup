@@ -91,15 +91,57 @@ For the winning shape, build two tables. Every affordance that appears in the wi
 
 Generate a Mermaid flowchart from the affordance tables. Group affordances by place. Show flows as directed arrows between affordance nodes.
 
+**Visual conventions:**
+- UI affordances (`U#`) — light pink fill: visually distinct as user-facing elements
+- Non-UI affordances (`N#`) — dark fill: visually distinct as code-level elements
+- Optional affordances (`~`) — dashed border
+- Data stores — a `DATA STORES` subgraph containing regular nodes, not cylinder notation
+- Places mix UI and code: PLACE, TRIGGER, and COMPONENT subgraphs contain both U# and N# nodes freely
+- Terminal exit nodes — stadium notation `End(["Destination"])`
+- Conditional flows — labeled arrows `-->|condition|`
+- Error / failure flows — dashed arrow `-.->|error|`
+- Subgraph label always prefixed with the place type: `PLACE:`, `TRIGGER:`, `DATA STORES`, `COMPONENT:`
+- Affordances shared across multiple places can float outside subgraphs
+
 ```mermaid
 flowchart TD
-  subgraph "PLACE: [name]"
-    N1["N1 functionName()"]
-    U1["U1 affordance name"]
+  classDef ui fill:#fce7f3,stroke:#f472b6,color:#1f2937
+  classDef code fill:#1f2937,stroke:#4b5563,color:#f9fafb
+  classDef opt stroke-dasharray:5 5
+
+  subgraph trigger["TRIGGER: [event name]"]
+    N1["N1 onEvent()"]
+    N2["N2 handler()"]
+    U1["U1 output content"]
   end
-  U1 --> N2
-  N1 --> U1
+
+  subgraph place1["PLACE: [screen name] (new)"]
+    N3["N3 query()"]
+    U2["U2 affordance name"]
+    U3["U3 error state"]
+  end
+
+  subgraph stores["DATA STORES"]
+    N4["N4 TableA"]
+    N5["N5 TableB"]
+  end
+
+  End(["Exit destination"])
+
+  N1 --> N2
+  N2 --> U1
+  N2 -->|condition| U2
+  N2 -->|other| U3
+  U2 --> N3
+  N3 --> N4
+  N3 -.->|error| U3
+  N4 --> End
+
+  class U1,U2,U3 ui
+  class N1,N2,N3,N4,N5 code
 ```
+
+Assign `class` at the bottom — one line per type group. Mark optional affordances with `class ~N10 opt`.
 
 **After generating, play it through:**
 
