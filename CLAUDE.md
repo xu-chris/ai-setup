@@ -8,37 +8,39 @@ This project is a Claude Code plugin encoding the Shape Up product methodology a
 
 Each phase has a dedicated skill in `skills/[phase]/SKILL.md` and a companion command in `commands/[phase].md`. The skill is model-invoked based on context. The command is user-invoked to explicitly enter a phase. Both should be kept small and anchored strictly to their phase.
 
-Phases and their skill directories:
+Phase skills (one per phase):
 - `skills/frame/` — framing
 - `skills/shape/` — shaping
 - `skills/bet/` — betting
 - `skills/kickoff/` — building kickoff
 - `skills/scope/` — scope breakdown
 
-### The concept document
+Specialist skills (invoked from within a phase, not standalone phases):
+- `skills/breadboarding/` — invoked from within shaping; writes the breadboard into `shape.md`
+- `skills/breadboard-reflection/` — invoked after implementation to sync the breadboard to code
+- `skills/ux-design/` — invoked from within shaping for UI behavior and copy
 
-Every piece of work lives in a single document under `docs/concepts/[name].md`. Skills do not create separate documents per phase. They write to sections of the same document. The document evolves through the phases:
+### The concept folder
 
-- **Framing** creates the document and fills the Frame section (problem, who is affected, current workaround, cost, urgency, appetite)
-- **Shaping** adds the Solution section (elements, breadboard, rabbit holes, dos, won't-dos)
-- **Betting** adds the Bet section (decision, conditions, cycle)
-- **Building kickoff** reads the full document and produces a separate `docs/concepts/[name].scopes.md`
+Every piece of work lives in a folder at `docs/concepts/[name]/`. Each phase writes its own file into that folder. The folder is created when the first file is written.
 
-The `status` field in the frontmatter tracks the lifecycle:
+| File | Owner | Written when |
+|------|-------|--------------|
+| `frame.md` | `frame` | Frame Go |
+| `shape.md` | `shape` | Shape Go |
+| `slices.md` | `kickoff` | Kickoff complete |
+| `S#-plan.md` | `scope` | Scope breakdown for slice # |
+
+The bet skill appends its decision to `frame.md`. It does not create a new file.
+
+The `status` field in `frame.md` frontmatter tracks the lifecycle:
 `candidate` → `frame-go` → `shape-go` → `bet` → `building`
 
-Each skill should check the status before starting and write the status when done.
+All shaping files carry `shaping: true` in their frontmatter so the ripple-check hook fires on edits.
 
-### Document section ownership
+### Hooks
 
-Each skill owns specific sections and leaves others alone:
-
-| Section | Owner |
-|---------|-------|
-| Problem, Who Is Affected, What They Do Instead, What Goes Wrong, Why Now, Appetite | `frame` |
-| Elements, Breadboard, Rabbit Holes, Dos, Won't-Dos | `shape` |
-| Decision, Conditions, Cycle | `bet` |
-| Build (link to scopes doc) | `kickoff` |
+`hooks/ripple-check.sh` fires after every Write or Edit on a file that carries `shaping: true` in its first five lines. It injects a reminder into Claude's context to keep downstream documents consistent when requirements, shapes, or breadboard diagrams change. The hook is registered in `hooks/hooks.json`.
 
 ## Working in This Project
 
