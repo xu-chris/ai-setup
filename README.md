@@ -7,6 +7,12 @@ Regardless if you work with developers or developing agents, only clarity of con
 This project adopts Shape Up for clarifying concepts before building with agents. By focusing on shaping concepts well in written form, you ship what you can maintain, not a half-assed product.
 
 
+## How this differs from similar tools
+
+**vs. Ryan Singer's [shaping-skills](https://github.com/rjs/shaping-skills):** Singer's skills cover the shaping phase in depth - breadboarding, fit checks, affordance tables. This plugin takes those mechanics and embeds them in the full Shape Up lifecycle: framing comes first, betting gates the build, kickoff maps the work into slices, and scope breakdown drives execution one slice at a time. Singer's skills are the sharpest part of the shaping phase here; this plugin wraps the rest of the methodology around them.
+
+**vs. [superpowers](https://github.com/obra/superpowers):** Superpowers is a development workflow plugin - it helps you implement once you know what to build (TDD, subagent-driven development, planning, code review). This plugin answers the earlier question: what should we build, and why? The two are complementary. Shape Up handles the pre-build phases; superpowers handles execution. The scope skill explicitly hands off to superpowers when both are installed.
+
 **Installation**
 
 Add the marketplace, then install the plugin:
