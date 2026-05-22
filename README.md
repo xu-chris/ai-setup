@@ -82,4 +82,8 @@ Every shaped concept is anchored to three constraints.
 
 ---
 
-*Based on the [Shape Up book](https://basecamp.com/shapeup) by Ryan Singer at Basecamp. This plugin is not affiliated with Basecamp / 37signals.*
+## Sources and prior art
+
+- [Shape Up](https://basecamp.com/shapeup) - Ryan Singer's original book. The methodology this plugin encodes.
+- [rjs/shaping-skills](https://github.com/rjs/shaping-skills) - Ryan Singer's own Claude Code skills for shaping. The breadboarding vocabulary (P#/U#/N#/S#), Wires Out vs Returns To, the Blocking Test, binary fit checks, and the ripple-check hook all originate here.
+- [obra/superpowers](https://github.com/obra/superpowers) - Jesse Vincent's Claude Code plugin. The plugin architecture, skill structure, hook patterns, and test infrastructure are modelled on superpowers.
