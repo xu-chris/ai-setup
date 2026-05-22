@@ -24,7 +24,7 @@ A scope is ready when someone can answer: what will I be able to demo when this 
 
 Read the full concept document. Absorb the problem, the appetite, the elements, the breadboard, the rabbit holes and their patches, and the won't-dos. The breadboard is the primary input for scope definition. It shows what places and flows need to exist and how they connect.
 
-While reading, note any parts of the concept that are unclear or underspecified. Gaps in the breadboard, rabbit holes without clear patches, or elements whose connection to the user flow is not obvious — these will affect scope definition. Collect them now. Resolve them with the user before proposing scopes.
+While reading, note any parts of the concept that are unclear or underspecified. Gaps in the breadboard, rabbit holes without clear patches, or elements whose connection to the user flow is not obvious: these will affect scope definition. Collect them now. Resolve them with the user before proposing scopes.
 
 ### Step 2: Investigate the Existing System
 
@@ -33,6 +33,8 @@ Before proposing scopes, understand what already exists. Search the codebase for
 Scopes derived from code reality are more accurate than scopes derived from the breadboard alone. Reusing an existing pattern is faster than building one. Discovering a missing foundation during scope breakdown, rather than now, costs more.
 
 If this is a new project with no prior codebase, use this step to confirm that foundational technology choices implied by the concept are settled and understood.
+
+Document the key findings. The scopes document will include an "Existing System Context" section that records what was found: reusable components, established patterns, areas where the concept extends existing behavior, and areas where it introduces something new. This context carries into scope breakdown and prevents each scope from being broken down in isolation from what the rest of the system looks like.
 
 ### Step 3: Identify and Propose Scopes
 
@@ -51,7 +53,7 @@ Present the proposed scopes to the user before writing the document. Describe wh
 
 Not all scopes carry equal risk. Scopes that touch rabbit holes identified during shaping, or that depend on things not fully understood, or that reach into unfamiliar areas of the existing system carry higher uncertainty. Name the uncertainty explicitly in the scopes document.
 
-Sequence matters. Tackle the highest-uncertainty scope first. It is tempting to start with what feels familiar to show early momentum. Discovering a critical unknown in week five of a six-week cycle is a crisis. Discovering it in week one is a problem with time to solve.
+Tackle the highest-uncertainty scope first. A critical unknown discovered in week five of a six-week cycle leaves no room to recover: the cycle ends without a finished thing. The same unknown discovered in week one is a solvable problem: there is time to investigate, regroup, and still deliver. Put uncertainty first so that if something breaks, it breaks early.
 
 ### Step 5: Set the Sequence
 
@@ -61,7 +63,15 @@ Wiring comes before finish. Build something that works before making it look rig
 
 ### Step 6: Confirm Against the Appetite
 
-Check the total scope of work against the appetite set during framing. If the scopes as defined exceed the appetite, cut at the scope level: remove or simplify whole scopes, not individual tasks within them. The won't-dos from shaping stay won't-dos.
+Check the total scope of work against the appetite set during framing. If the scopes as defined exceed the appetite, there are three options:
+
+**Cut scopes.** Remove or simplify whole scopes until the work fits. Cut at the scope level, not at the task level within a scope. The won't-dos from shaping stay won't-dos.
+
+**Simplify a scope.** Sometimes a scope can be narrowed to a smaller demoable outcome that still delivers value. This is different from cutting — the scope stays, but its boundary shrinks.
+
+**Reframe the problem.** If cutting and simplifying still leave the work too large, the problem itself may have been framed too broadly. Return the concept to framing with the new understanding gained during kickoff. This is not a failure: it is the process discovering that the appetite and the problem were not yet calibrated to each other.
+
+Do not proceed to building with more work than the appetite covers. A cycle that begins over-scoped ends without a finished thing.
 
 ## Output: The Scopes Document
 
@@ -76,7 +86,10 @@ status: building
 # Scopes: [Concept Name]
 
 ## What We're Building
-[Two or three sentences drawn from the concept document. Problem being solved and the shaped approach. Not a repeat of the full concept — just enough context to orient anyone reading the scopes document on its own.]
+[Two or three sentences drawn from the concept document. Problem being solved and the shaped approach. Enough context to orient anyone reading the scopes document on its own, without repeating the full concept.]
+
+## Existing System Context
+[Key findings from the codebase investigation: reusable components, established patterns, areas where this work extends existing behavior, and areas where it introduces something new. This section is the handoff from kickoff investigation to scope breakdown. It prevents each scope from being planned without knowledge of what the rest of the system looks like.]
 
 ## Scopes
 

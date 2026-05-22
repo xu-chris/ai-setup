@@ -1,5 +1,5 @@
 ---
-description: Use when a scopes document exists and building is ready to begin on a specific scope. Breaks a single scope into concrete tasks an agent can execute. Adds tasks to the scopes document under the relevant scope. Run once per scope, at the start of work on that scope — not for all scopes upfront.
+description: Use when a scopes document exists and building is ready to begin on a specific scope. Breaks a single scope into concrete tasks an agent can execute. Adds tasks to the scopes document under the relevant scope. Run once per scope, at the start of work on that scope. Do not run for all scopes upfront.
 ---
 
 # Scope Breakdown
@@ -32,21 +32,25 @@ The breadboard in the concept document shows the places, affordances, and connec
 
 This produces a rough list of what needs to exist. Do not organize it by layer yet. Keep it as a flat list of things that need to happen.
 
+Once the list exists, check it for vertical coverage. A vertical slice reaches through all layers needed to produce a demoable behavior: from the data or logic that drives it, through whatever connects them, to the interface the user touches. If every item in your list is backend work, or every item is UI work, you have organized by layer. Regroup around behavior: what has to come together, across all layers, to make this flow work and be demoable?
+
 ### Step 3: Investigate the Relevant Code
 
 Before sequencing tasks, read the code relevant to this scope. Search for existing implementations related to the breadboard places and affordances: data models, queries, API handlers, UI components, utilities. Understand what already exists, what patterns are established, and where this scope will extend or modify existing behavior.
 
 Tasks derived from code reality are more precise than tasks derived from the breadboard alone. Discovering a missing dependency during execution costs more than discovering it during breakdown.
 
-If the investigation reveals that the scope touches areas significantly more complex than the concept document suggested, surface this before proceeding. See "When the Scope Is Larger Than Expected" below.
+If the investigation reveals complexity significantly beyond what the concept document suggested, do not continue. See "When the Scope Is Larger Than Expected" below.
+
+If investigation surfaces an unpatched rabbit hole — a technical complexity that could significantly expand the scope and was not addressed during shaping — do not continue with task breakdown. State clearly what was found: where it is in the code, why it is more complex than expected, and what the risk is if it is ignored. Get a decision before proceeding. The options are: patch it with a constraint that keeps the scope viable, narrow the scope to avoid it, or return the concept to shaping with the new understanding. Continuing without a decision turns a shaping gap into a build failure.
 
 ### Step 4: Sequence by Dependency and Uncertainty
 
-Order tasks so that each one can build on the previous. The first task in a scope should establish the foundation, the thing that other tasks depend on. If the scope has a rabbit hole identified in the concept document, the task that addresses it comes early. Do not leave unknowns until the end of a scope.
+Order tasks so that each one can build on the previous. The first task in a scope should establish the foundation the other tasks depend on. If the scope has a rabbit hole identified in the concept document, the task that addresses it comes early. Do not leave unknowns until the end of a scope.
 
 Wiring before finish. Tasks that get the mechanics working come before tasks that make things look right. A scope is not done when it looks polished. It is done when it works. Polish is the last task, not the first priority.
 
-Where tasks are independent of each other, note this explicitly. Independent tasks can be executed in parallel by an agent. Flagging them reduces unnecessary sequencing and speeds up the scope.
+Where tasks are independent, flag them explicitly: they can run in parallel and do not need to wait on each other.
 
 ### Step 5: Use Domain Language
 
@@ -56,15 +60,15 @@ Consistent language across concept, scopes, and tasks keeps the work traceable t
 
 ### Step 6: Write Acceptance Criteria
 
-For each task, write one to three acceptance criteria — specific, observable conditions that confirm the task is done. Criteria should describe behavior, not implementation. "The panel shows the three most recent missed payments for the current member" is a criterion. "The query returns results" is not.
+For each task, write one to three acceptance criteria: specific, observable conditions that confirm the task is done. Criteria must describe behavior, not implementation. "The panel shows the three most recent missed payments for the current member" is a criterion. "The query returns results" is not.
 
-If acceptance criteria are hard to write, the task is probably too vague. Restate it until the done condition is clear.
+If acceptance criteria are hard to write, the task is too vague. Restate it until the done condition is clear.
 
 ### Step 7: Propose and Confirm
 
 Present the task list to the user before writing it to the scopes document. Walk through each task, explain the sequence, and confirm the acceptance criteria make sense to someone who understands the problem. Adjust based on feedback.
 
-Writing unreviewed tasks into the scopes document produces a plan that the person who bet on the cycle may not recognize. The breakdown is complete when it has been confirmed, not when it has been generated.
+The breakdown is complete when it has been confirmed, not when it has been generated.
 
 ## Output
 
@@ -86,14 +90,12 @@ After adding all tasks, update the scope's status in the scopes document from `b
 
 ## Staying Inside the Scope
 
-While breaking down tasks, watch for scope creep. If a task seems necessary but falls outside the scope's stated boundary, or contradicts a won't-do in the concept document, flag it explicitly rather than silently including it. Either it belongs to a different scope, or it is a sign that the scope boundary needs renegotiating before work starts.
+While breaking down tasks, watch for scope creep. If a task seems necessary but falls outside the scope's stated boundary, or contradicts a won't-do in the concept document, flag it explicitly rather than silently including it. Either it belongs to a different scope, or the scope boundary needs renegotiating before work starts.
 
-The won't-dos from shaping are still in effect. They do not become negotiable during breakdown.
+The won't-dos from shaping prevent scope expansion. They do not prevent scope tightening. If investigation reveals the demoable outcome can be reached more cleanly by cutting something the scope included, that narrowing is valid. Surface it explicitly: state what you are cutting and why, and confirm it before writing the tasks. Silently shrinking the scope is as much of a problem as silently expanding it.
 
 ## When the Scope Is Larger Than Expected
 
-If the task list grows beyond ten tasks, or if code investigation reveals complexity that the scope description did not anticipate, stop. Do not continue generating tasks. Surface the situation: what was found, why it is more complex than expected, and what the options are.
+If the task list grows beyond ten tasks, or if code investigation reveals complexity the scope description did not anticipate, stop. Do not continue generating tasks. Surface the situation: what was found, why it is more complex than expected, and what the options are.
 
-Options include: narrowing the scope by cutting tasks not essential to the demoable outcome, splitting the scope into two, or accepting the larger scope and adjusting the cycle's remaining appetite.
-
-This decision belongs to the person who bet on this cycle. Do not resolve it by silently expanding the task list.
+Options: narrow the scope by cutting tasks not essential to the demoable outcome, split the scope into two, or accept the larger scope and adjust the cycle's remaining appetite. This decision belongs to the person who bet on this cycle. Do not resolve it by silently expanding the task list.
