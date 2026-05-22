@@ -11,6 +11,16 @@ Use this skill to **design** new UI behavior with the right defaults, **write** 
 
 This skill covers WHAT to build (behavior, feedback, copy, error handling, information design).
 
+## The Iron Law
+
+```
+DESIGN FOR BEHAVIOR AND RECOVERY, NOT APPEARANCE
+```
+
+Every UI decision passes through this: does this help the user do something, understand something, or recover from something? If it is only about how things look, it is not a design decision — it is a style decision. Style comes after behavior is confirmed.
+
+Violating the letter of this rule is violating the spirit of it.
+
 ## Core Principles
 
 These principles do contain always-applicable design mindset. Every UI decision should pass through these.
@@ -303,3 +313,39 @@ Task-based audit inspired by Fried's Defensive Design. Role-play as a distracted
 - [ ] Use keyboard shortcuts for common actions. Are accelerators available for frequent tasks?
 - [ ] Complete a frequent task. Is it faster the tenth time than the first? Are there shortcuts or remembered preferences?
 - [ ] Scan a dense page. Can you find what matters without reading everything? Is there clear visual hierarchy?
+
+## Red Flags
+
+| If you're thinking... | Do this |
+|---|---|
+| "Users will figure it out" | Apply "Look like what you do" — if it needs figuring out, redesign it |
+| "We'll handle that error state later" | Apply "Fail gracefully" — error states are not edge cases, design them now |
+| "'Submit' is fine here" | Apply "Speak human" — every button needs verb + object |
+| "The empty state is obvious" | Apply "Close the loop" — explain why it's empty and what to do |
+| "Generic 'Something went wrong' is enough" | Apply "Fail gracefully" — say what happened, why, and what to do next |
+| "We'll polish the error messages before launch" | Apply "Fail gracefully" — error messages are core behavior, not polish. Write them now. |
+
+## Rationalization Table
+
+| Excuse | Reality |
+|---|---|
+| "That error state is unlikely" | Plan for every failure. Unlikely states are the ones that destroy trust when they happen. |
+| "Users can read the label" | Users don't read — they click and discover. Design for that. |
+| "The confirmation dialog is self-explanatory" | "Are you sure?" tells the user nothing. Name what will be affected. |
+| "We'll add the empty state later" | Empty states are first impressions for new users. Design them first. |
+| "High fidelity first so stakeholders can see it" | Wire behavior first. Behavior must be confirmed before appearance is worth investing in. |
+
+## Quick Reference
+
+Maps the audit scenarios to the core principles they test — when an audit item fails, apply the listed principles to fix it.
+
+| Audit scenario | Core principles to apply |
+|---|---|
+| Try to fail | Fail gracefully, Prevent before cure |
+| Try to get lost | Show where they are, Be consistent |
+| Try to do nothing | Close the loop, Fail gracefully |
+| Try to recover | Respect autonomy, Be forgiving |
+| Try to understand | Speak human, Look like what you do |
+| Try to trust | Close the loop, Fail gracefully |
+| Try to be sloppy | Be forgiving, Prevent before cure |
+| Try to go fast | Reduce work, Be consistent |

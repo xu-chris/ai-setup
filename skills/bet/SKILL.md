@@ -1,60 +1,127 @@
 ---
-description: Use when a concept has reached Shape Go and needs a deliberate decision before building begins. Evaluates the shaped concept against competing priorities and available time. Adds the Bet section to the concept document.
+name: bet
+description: Use when a concept has reached Shape Go and needs a deliberate decision before building begins.
 ---
 
 # Betting
 
-Betting is the decision to commit time to building a shaped concept. It is not a planning ceremony or a review meeting. It is a weighted choice: given everything else that could be done, is this the right thing to build now?
+Betting is the decision to commit build time to a shaped concept. It is a weighted choice: given everything else that could be done, is this the right thing to build now?
 
-A bet has three properties. It has a payout: something meaningful is finished at the end of the cycle. It is a commitment: the time is protected and the work gets uninterrupted attention. It has a capped downside: the maximum loss is one cycle, never an open-ended extension.
+A bet has three properties. It has a payout — something meaningful is finished at the end of the cycle. It is a commitment — time is protected and the work gets uninterrupted attention. It has a capped downside — the maximum loss is one cycle, never an open-ended extension.
 
-Before starting: read the concept document at `docs/concepts/[name].md`. The status must be `shape-go`. If shaping is incomplete or the three properties of shaped work have not been validated, return to shaping. A fuzzy shape produces a bad bet.
+In most companies, betting is one-to-one: one candidate is framed, shaped, and green-lit. Alignment is built progressively through framing and shaping — by the time the concept reaches Shape Go, the team already knows this is the thing. The betting step is the final stamp of approval, not a competition between pitches.
 
-## The Five Questions
+**Before starting:** Read the concept document at `docs/concepts/[name].md`. The status must be `shape-go`. If shaping is incomplete, return to shaping. A fuzzy shape produces a bad bet.
 
-Work through these questions to find any reason to say no. If a reason surfaces, either resolve it or accept it consciously before committing. The bias must be toward finding problems, not toward finding permission.
+## The Iron Law
+
+```
+A FUZZY SHAPE PRODUCES A BAD BET. THE BIAS IS TOWARD NO.
+```
+
+Violating the letter of this rule is violating the spirit of it. The five questions exist to find reasons to say no, not to find permission to say yes. If any question cannot be answered with specific evidence — not reassurance — the concept is not ready to bet on.
+
+The bias toward no is not just a quality gate — it is the mechanism by which teams achieve conviction. Eliminating many options aligns the team on one thing. "No, no, no... YES!" produces more confidence than a weak yes ever can.
+
+## Phase 1: Verify Shape Quality
+
+**Goal:** Confirm the concept is actually shaped before evaluating it.
+
+Check three things:
+- All rabbit holes have patches — no open ends
+- Technical grounding is visible — there is evidence in the concept that the relevant code was actually examined, not just reasoned about from the outside
+- The three properties (rough, solved, bounded) have been validated
+
+**Gate:** All three hold. If any fail, return to shaping before proceeding.
+
+```
+IF any rabbit hole has no patch → return to shaping. Do not bet on a concept with open rabbit holes.
+IF no evidence of technical grounding in the concept → return to shaping.
+  A guess dressed as a plan surfaces its problems in week three of a six-week cycle.
+```
+
+## Phase 2: Work the Five Questions
+
+**Goal:** Find every reason to say no before committing build time.
+
+Work through these looking for problems, not for reassurance. If a reason to say no surfaces, either resolve it consciously or accept it as known before committing.
+
+In most cases these questions are answered quickly — alignment was built progressively through framing and shaping, and the betting step is confirmation, not discovery. If the questions are hard to answer, that is a signal the alignment was not built.
 
 **1. What goes wrong if this does not get built?**
-Separate the problem from the solution and ask about the cost of inaction: what breaks, stalls, or deteriorates if this cycle ends and nothing was built? If the answer is "not much," the problem is not urgent enough to bet on. Compare it honestly against whatever else is competing for this cycle. The strength of a bet is proportional to the clarity of what gets worse without it.
+Separate the problem from the solution. What breaks, stalls, or deteriorates if this cycle ends and nothing was built? If the answer is "not much," the problem is not urgent enough to bet on.
 
 **2. Is the appetite right?**
-The appetite was set during framing. Does it still feel accurate given what shaping revealed? If shaping surfaced more complexity than expected, the appetite may need revisiting. If the solution feels overbuilt for the problem, the appetite may be too large. Appetite is a business signal: how much is this actually worth, given what we now know?
+Appetite was set during framing. Does it still feel accurate given what shaping revealed? If shaping surfaced more complexity than expected, the appetite may need revisiting. If the solution feels overbuilt for the problem, the appetite may be too large.
 
 **3. Is the solution sound?**
-Does the shaped solution actually address the problem? Are the won't-dos acceptable given the problem's real cost? Are the rabbit hole patches convincing?
-
-Two checks here. First: every rabbit hole must have a patch. A concept with open rabbit holes is not ready to bet on: those holes will swallow build time and the cycle will end without a finished thing.
-
-Second: does the shape show evidence of technical grounding? Can you point to specific decisions in the concept that reflect knowledge of how the existing system works? If the breadboard shows flows and the rabbit holes have patches, but no one who shaped it has actually looked at the relevant code, the solution may be undershaped. A guess dressed as a plan will surface its problems in week three of the cycle. Verify that the shaping included enough technical investigation to be trusted.
+Does the shaped solution actually address the problem? Are the won't-dos acceptable given the problem's real cost? Are the rabbit hole patches convincing? Can you point to specific decisions in the concept that reflect knowledge of how the existing system works?
 
 **4. Is this the right time, with the right people?**
-Good concepts can still be wrong for this moment. Consider what has just shipped, what technical state the codebase is in, and what momentum exists. A concept that requires working in an area that is in flux is a riskier bet than one that is cleanly isolated.
-
-Also consider who is available. Will the people needed to execute this concept have the time and focus the cycle requires? Betting when key contributors are unavailable or split across other commitments puts the cycle at a structural disadvantage from the start.
+Consider what has just shipped, what technical state the codebase is in, and what momentum exists. Consider who is available — will the people needed to execute this concept have the time and focus the cycle requires?
 
 **5. Is this the one thing?**
-A bet is a commitment to one thing for the duration of the cycle. If two shaped concepts are competing, the choice is "which one", not "both in parallel" or "both sequentially." Making this explicit prevents cycles where attention is split and nothing gets finished.
+A bet is a commitment to one thing for the duration of the cycle. If two shaped concepts are competing, the choice is "which one" — not "both in parallel" or "both sequentially this cycle."
 
-## Making the Decision
+**Gate:** All five questions answered with specific evidence, not general reassurance.
 
-After the five questions, the decision is binary: bet or no bet.
+## Phase 3: Make the Binary Decision
 
-**Bet** — the concept moves to building. Set `status: bet`. Fill in the Bet section of the document with the decision rationale, any conditions that must hold, and the cycle it is assigned to.
+**Goal:** Commit or decline — no middle ground.
 
-**No bet** — the concept does not move forward in this cycle. It does not go into a backlog. If it still matters, it will come back to framing or shaping when the time is right. Set `status: candidate` and note briefly why this cycle is not the right time.
+The decision is binary.
 
-There is no "maybe" or "partial bet." A concept that cannot survive the five questions needs more framing, more shaping, or a different moment.
+**Bet** — the concept moves to building. Set `status: bet`. Fill in the Bet section with the decision rationale, conditions that must hold, and the cycle assigned.
+
+**No bet** — the concept does not move forward this cycle. It does not go into a backlog. If it still matters, it returns to framing or shaping when the time is right. Set `status: candidate` and note briefly why this cycle is not the right time. A no-bet is discipline, not failure.
+
+```
+IF the decision is "maybe, let's see" → it is a no bet
+IF the decision is "both in parallel" → that is not a bet; make the choice
+IF the decision is "both sequentially this cycle" → that is not a bet; one thing per cycle
+```
+
+**Gate:** Decision is bet or no bet, written to the concept document.
 
 ## Output
 
 When the decision is bet, write to the Bet section of `docs/concepts/[name].md`:
 
-**Decision** — one or two sentences stating the bet and the primary reason it was chosen over alternatives.
+**Decision** — one or two sentences stating the bet and the primary reason it was chosen.
 
 **Conditions** — anything that must remain true for the bet to hold. If a dependency shifts or a constraint changes, these conditions surface whether the bet needs revisiting.
 
-**Cycle** — the cycle this is assigned to. Can be a date range, a cycle number, or any label that makes the timing concrete.
+**Cycle** — the cycle this is assigned to. A date range, cycle number, or any label that makes the timing concrete.
 
 Set `status: bet` in the frontmatter.
 
-If the decision is no bet, update `status: candidate` and add a brief note under the Bet section explaining why. This is not a permanent judgment: it is context for when the concept comes back.
+If no bet, update `status: candidate` and add a brief note explaining why this cycle is not the right time. This is not a permanent judgment.
+
+## Red Flags
+
+| If you're thinking... | Do this |
+|---|---|
+| "We'll figure out the rabbit hole during building" | STOP — open rabbit holes are a no bet |
+| "The shape is probably good enough" | STOP — verify phase 1 before evaluating |
+| "Both in parallel is more efficient" | That is not a bet. Make the choice. |
+| "We've been waiting on this one for a while" | Age of a concept is not a reason to bet on it |
+| "A no bet feels like failure" | No bets are discipline. They protect the cycle. |
+| "The technical concerns are minor" | If technical grounding is not visible in the concept, it is a gap |
+
+## Rationalization Table
+
+| Excuse | Reality |
+|---|---|
+| "The shape is close enough" | Fuzzy shapes produce bad bets. Return to shaping. |
+| "We can fix it if something comes up in building" | Week-three discoveries leave no room to recover |
+| "The bias toward no is too conservative" | Most bets fail from insufficient shaping, not insufficient optimism |
+| "Partial commitment this cycle, rest next" | A cycle with split attention ends without a finished thing |
+| "We said we'd ship this quarter" | Dates don't fix fuzzy shapes. Bet when the shape is ready. |
+
+## Quick Reference
+
+| Phase | Key Activity | Gate |
+|---|---|---|
+| 1. Verify Shape | Rabbit holes patched, technical grounding visible, three properties validated | All three hold before evaluating |
+| 2. Five Questions | Look for reasons to say no | All five answered with evidence |
+| 3. Binary Decision | Bet or no bet | Written to concept document |

@@ -1,78 +1,134 @@
 ---
-description: Use when a scopes document exists and building is ready to begin on a specific scope. Breaks a single scope into concrete tasks an agent can execute. Adds tasks to the scopes document under the relevant scope. Run once per scope, at the start of work on that scope. Do not run for all scopes upfront.
+name: scope
+description: Use when a scopes document exists and building is ready to begin on a specific scope.
 ---
 
 # Scope Breakdown
 
-Scope breakdown is the work of translating one scope from the scopes document into a sequence of concrete tasks. It happens at the start of work on that scope, not all at once before building begins. Breaking down all scopes upfront produces plans that are wrong by the time you reach them.
+Scope breakdown translates one scope from the scopes document into a concrete sequence of tasks. It happens at the start of work on that scope — not all at once before building begins. Breaking down all scopes upfront produces plans that are wrong by the time you reach them. Learning from each scope informs the next.
 
-One scope at a time. Work through it. Learn. Then break down the next.
+**One scope at a time. Work through it. Learn. Then break down the next.**
 
-Before starting: read `docs/concepts/[name].scopes.md` and identify the scope to break down. Also read `docs/concepts/[name].md` to have the full concept (elements, breadboard, rabbit holes, and won't-dos) in view. Tasks must stay within the scope boundary and respect the won't-dos.
+**Before starting:** Read `docs/concepts/[name].scopes.md` and identify the scope to break down. Also read `docs/concepts/[name].md` to have the full concept in view. Tasks must stay within the scope boundary and respect the won't-dos.
 
-## What a Task Is
+## The Iron Law
 
-A task is a concrete action that contributes to the scope's demoable outcome. It is specific enough that an agent can pick it up and execute without asking what it means. It is not a layer ("implement the backend"), not a vague goal ("make it work"), and not a user story.
+```
+ONE SCOPE AT A TIME. BREAK DOWN AT THE START OF THAT SCOPE, NOT ALL UPFRONT.
+```
 
-A well-formed task answers three things: what to do, how to know it is done, and what must exist before it can start.
+Violating the letter of this rule is violating the spirit of it. Plans written far in advance are wrong when executed — each scope teaches something that changes what comes next.
 
-Aim for 3 to 10 tasks per scope. Fewer than three usually means the scope is underdeveloped. More than ten usually means the tasks are too granular or the scope is too large.
+## Phase 1: Understand What the Scope Delivers
 
-## How to Break Down a Scope
+**Goal:** Know the demoable outcome before breaking down any tasks.
 
-### Step 1: Understand What the Scope Delivers
+Read the scope entry in the scopes document. Every task must contribute to reaching the demoable outcome described there.
 
-Read the scope entry in the scopes document. The scope has a name, a description of what it delivers, and an uncertainty level. That description is the target. Every task must contribute to reaching it.
+**Gate:** Can state the demoable outcome in one sentence before any task breakdown begins.
 
-If the scope description is vague, clarify it with the user before breaking it down. A vague scope produces tasks that point in different directions.
+```
+IF the scope description is vague → clarify with the user before proceeding
+  A vague scope produces tasks that point in different directions
+```
 
-### Step 2: Work from the Breadboard
+## Phase 2: Work from the Breadboard
 
-The breadboard in the concept document shows the places, affordances, and connections relevant to this scope. Walk through the breadboard sections that belong to this scope and ask: what has to be built for this flow to work end to end?
+**Goal:** Produce a flat list of what needs to exist for this flow to work end to end.
 
-This produces a rough list of what needs to exist. Do not organize it by layer yet. Keep it as a flat list of things that need to happen.
+Walk through the breadboard sections in the concept document that belong to this scope. Ask: what has to be built for this flow to work end to end? Keep it as a flat list — do not organize by layer yet.
 
-Once the list exists, check it for vertical coverage. A vertical slice reaches through all layers needed to produce a demoable behavior: from the data or logic that drives it, through whatever connects them, to the interface the user touches. If every item in your list is backend work, or every item is UI work, you have organized by layer. Regroup around behavior: what has to come together, across all layers, to make this flow work and be demoable?
+Then check for vertical coverage. A vertical slice reaches through all layers needed to produce a demoable behavior: from the data or logic that drives it, through whatever connects them, to the interface the user touches.
 
-### Step 3: Investigate the Relevant Code
+```
+IF all items in the list are backend work → regroup around behavior
+  What must come together across all layers to make this flow demoable?
+IF all items are UI work → same: what must come together to make this scope work end to end?
+```
 
-Before sequencing tasks, read the code relevant to this scope. Search for existing implementations related to the breadboard places and affordances: data models, queries, API handlers, UI components, utilities. Understand what already exists, what patterns are established, and where this scope will extend or modify existing behavior.
+**Gate:** List covers all layers needed to produce the demoable outcome.
 
-Tasks derived from code reality are more precise than tasks derived from the breadboard alone. Discovering a missing dependency during execution costs more than discovering it during breakdown.
+## Phase 3: Investigate the Relevant Code
 
-If the investigation reveals complexity significantly beyond what the concept document suggested, do not continue. See "When the Scope Is Larger Than Expected" below.
+**Goal:** Read code before sequencing tasks — not after.
 
-If investigation surfaces an unpatched rabbit hole — a technical complexity that could significantly expand the scope and was not addressed during shaping — do not continue with task breakdown. State clearly what was found: where it is in the code, why it is more complex than expected, and what the risk is if it is ignored. Get a decision before proceeding. The options are: patch it with a constraint that keeps the scope viable, narrow the scope to avoid it, or return the concept to shaping with the new understanding. Continuing without a decision turns a shaping gap into a build failure.
+Search for existing implementations related to the breadboard places and affordances: data models, queries, API handlers, UI components, utilities. Understand what already exists, what patterns are established, and where this scope extends or modifies existing behavior.
 
-### Step 4: Sequence by Dependency and Uncertainty
+Tasks derived from code reality are more precise than tasks derived from the breadboard alone. Discovering a missing dependency during breakdown costs less than discovering it mid-scope.
 
-Order tasks so that each one can build on the previous. The first task in a scope should establish the foundation the other tasks depend on. If the scope has a rabbit hole identified in the concept document, the task that addresses it comes early. Do not leave unknowns until the end of a scope.
+```
+IF investigation reveals complexity significantly beyond what the concept document suggested
+  → STOP. Do not continue. Surface what was found.
 
-Wiring before finish. Tasks that get the mechanics working come before tasks that make things look right. A scope is not done when it looks polished. It is done when it works. Polish is the last task, not the first priority.
+IF investigation surfaces an unpatched rabbit hole:
+  → STOP. State clearly: where it is in the code, why it is more complex than expected, what the risk is.
+  → Get a decision before proceeding.
+  Options: patch with a constraint, narrow the scope, return concept to shaping.
+  Continuing without a decision turns a shaping gap into a build failure.
+```
 
-Where tasks are independent, flag them explicitly: they can run in parallel and do not need to wait on each other.
+**Gate:** Can name existing patterns this scope reuses and the areas that are new territory.
 
-### Step 5: Use Domain Language
+## Phase 4: Sequence by Dependency and Uncertainty
 
-Name tasks in the language of the concept document. If the scope is "Missed Payments Panel," tasks are "build the missed payments data query," "wire the panel to live data," "display payment retry status" — not "implement backend endpoint," "connect API," "update UI state."
+**Goal:** Order tasks so each builds on the previous, with unknowns addressed early.
 
-Consistent language across concept, scopes, and tasks keeps the work traceable to the problem it is solving. When an agent reads a task named in domain terms, it knows what success looks like in terms the problem-owner would recognize.
+The first task establishes the foundation the other tasks depend on. If the scope has a rabbit hole identified in the concept document, the task that addresses it comes early.
 
-### Step 6: Write Acceptance Criteria
+**Wiring before finish.** Tasks that get the mechanics working come before tasks that make things look right. A scope is done when it works, not when it is polished. Polish is the last task, not the first priority. Very often, wiring with raw or inherited UI is enough to confirm the mechanics — high fidelity comes after the wiring is confirmed.
 
-For each task, write one to three acceptance criteria: specific, observable conditions that confirm the task is done. Criteria must describe behavior, not implementation. "The panel shows the three most recent missed payments for the current member" is a criterion. "The query returns results" is not.
+Not every task needs the same level of finish. For well-understood, routine work (standard auth flows, known patterns), a stub that unblocks more critical tasks is enough — move through the known quickly and put focus on the unknown. A stub is not an excuse to skip the unknown; it is a way to sequence effort correctly.
 
-If acceptance criteria are hard to write, the task is too vague. Restate it until the done condition is clear.
+Where tasks are independent, flag them explicitly — they can run in parallel.
 
-### Step 7: Propose and Confirm
+**Gate:** Task list is ordered with highest-uncertainty tasks first. Dependencies are explicit.
 
-Present the task list to the user before writing it to the scopes document. Walk through each task, explain the sequence, and confirm the acceptance criteria make sense to someone who understands the problem. Adjust based on feedback.
+## Phase 5: Write Acceptance Criteria
 
-The breakdown is complete when it has been confirmed, not when it has been generated.
+**Goal:** Give each task a specific, observable done condition.
+
+For each task: one to three acceptance criteria describing behavior, not implementation.
+
+- "The panel shows the three most recent missed payments for the current member" — behavior ✓
+- "The query returns results" — implementation ✗
+
+**Gate:** Every acceptance criterion describes observable behavior. If criteria are hard to write, the task is too vague — restate it until the done condition is clear.
+
+## Phase 6: Propose and Confirm
+
+**Goal:** Get user confirmation before writing tasks to the scopes document.
+
+Present the task list, walk through the sequence, and confirm the acceptance criteria make sense to someone who understands the problem. Adjust based on feedback.
+
+**Gate:** User has confirmed before tasks are written to the scopes document. The breakdown is complete when confirmed, not when generated.
+
+## Staying Inside the Scope
+
+```
+IF a task seems necessary but falls outside the scope's stated boundary
+  → flag it explicitly. Either it belongs to a different scope, or the boundary needs renegotiating.
+
+IF investigation reveals the demoable outcome can be reached by cutting something the scope included
+  → surface it explicitly and confirm before writing
+  Silently shrinking scope is as much of a problem as silently expanding it.
+```
+
+## When the Scope Is Larger Than Expected
+
+```
+IF task list grows beyond 10 tasks → STOP. Do not continue generating tasks.
+  Surface: what was found, why it is more complex than expected, what the options are.
+  Options:
+    - Narrow the scope by cutting tasks not essential to the demoable outcome
+    - Split the scope into two
+    - Accept the larger scope and adjust the cycle's remaining appetite
+  This decision belongs to the person who bet on this cycle.
+  Do not resolve it by silently expanding the task list.
+```
 
 ## Output
 
-Add tasks inline to the relevant scope in `docs/concepts/[name].scopes.md`. Use this structure for each task:
+Add tasks inline to the relevant scope in `docs/concepts/[name].scopes.md`:
 
 ```markdown
 #### [Task Name]
@@ -86,16 +142,36 @@ Add tasks inline to the relevant scope in `docs/concepts/[name].scopes.md`. Use 
 **Can run in parallel with:** [task name] or none
 ```
 
-After adding all tasks, update the scope's status in the scopes document from `building` to `in progress` to signal that work on this scope has been planned and can begin.
+After adding all tasks, update the scope's status from `building` to `in progress`.
 
-## Staying Inside the Scope
+## Red Flags
 
-While breaking down tasks, watch for scope creep. If a task seems necessary but falls outside the scope's stated boundary, or contradicts a won't-do in the concept document, flag it explicitly rather than silently including it. Either it belongs to a different scope, or the scope boundary needs renegotiating before work starts.
+| If you're thinking... | Do this |
+|---|---|
+| "I'll break down all scopes now while I'm thinking about it" | STOP — one scope at a time, at the start of that scope |
+| "Tasks named by layer are clearer" | Regroup around behavior — layer names are not task names |
+| "This acceptance criterion describes the implementation" | Rewrite it to describe observable behavior |
+| "The task list is 14 items but they're all necessary" | STOP — surface the situation, do not continue |
+| "I'll just include this task, it's obviously in scope" | Flag it explicitly — obvious is not confirmed |
+| "I'll quietly narrow the scope to make it fit" | Surface it and confirm — silently shrinking is the same problem as silently expanding |
 
-The won't-dos from shaping prevent scope expansion. They do not prevent scope tightening. If investigation reveals the demoable outcome can be reached more cleanly by cutting something the scope included, that narrowing is valid. Surface it explicitly: state what you are cutting and why, and confirm it before writing the tasks. Silently shrinking the scope is as much of a problem as silently expanding it.
+## Rationalization Table
 
-## When the Scope Is Larger Than Expected
+| Excuse | Reality |
+|---|---|
+| "Breaking down all scopes upfront is more efficient" | Plans for future scopes are wrong when you reach them |
+| "The task names make sense to me" | Task names must be traceable to the problem in domain language |
+| "Acceptance criteria are obvious from the task name" | Unwritten criteria are not criteria — write them |
+| "The rabbit hole is smaller than it looks" | Unpatched rabbit holes surface in build. Surface them now. |
+| "High fidelity now saves time later" | Wire first. Confirm the mechanics. Polish after. |
 
-If the task list grows beyond ten tasks, or if code investigation reveals complexity the scope description did not anticipate, stop. Do not continue generating tasks. Surface the situation: what was found, why it is more complex than expected, and what the options are.
+## Quick Reference
 
-Options: narrow the scope by cutting tasks not essential to the demoable outcome, split the scope into two, or accept the larger scope and adjust the cycle's remaining appetite. This decision belongs to the person who bet on this cycle. Do not resolve it by silently expanding the task list.
+| Phase | Key Activity | Gate |
+|---|---|---|
+| 1. Understand Scope | State the demoable outcome | One sentence before any task |
+| 2. Breadboard | Flat list of what needs to exist | Covers all layers |
+| 3. Investigate Code | Read relevant code | Can name reusable patterns and new territory |
+| 4. Sequence | Uncertainty first, wiring before finish | Highest uncertainty tasks first |
+| 5. Acceptance Criteria | Behavior-based done conditions | Every criterion is observable behavior |
+| 6. Confirm | Present to user before writing | User confirmed before tasks written |

@@ -1,12 +1,14 @@
 # Shape Up for Claude Code
 
-In a world where developers become product managers reviewing PRs of sloppy junior AI developers, a methodology for working with agents becomes mandatory. The [Shape Up](https://basecamp.com/shapeup) product development methodology by 37Signals fits this new work style with written concepts, a betting table, and fixed scopes.
+!> This is work in progress and being tested and iteratively improved. It has not not proven to be useless, let's phrase it like that ;)
 
-This project brings that way of working into the sole developer's agentic workspace. By focusing on shaping concepts well in written form, you ship half a product, not a half-assed one.
+Regardless if you work with developers or developing agents, only clarity of concepts lead to desired, on-point solutions. The [Shape Up](https://basecamp.com/shapeup) product development methodology by 37Signals is a systematic way of creating such clarity for product teams.
+
+This project aims to adopt Shape Up for clarifying the concept for developing agents. By focusing on shaping concepts well in written form, you ship what you can maintain, not a half-assed product.
+
 
 **Installation**
 
-During development:
 
 ```
 /plugin install @xu-chris/shape-up

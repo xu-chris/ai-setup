@@ -1,72 +1,88 @@
 ---
-description: Use when a concept document has reached Frame Go and the problem is clear enough to start defining a solution. Guides the user through elements, breadboarding, rabbit holes, and scope boundaries. Adds to the Solution section of the concept document.
+name: shape
+description: Use when a concept document has reached Frame Go and the problem is clear enough to start defining a solution.
 ---
 
 # Shaping
 
-Shaping is the work of defining what to build. It starts from a clear problem (the Frame) and produces a solution concept that is rough enough to leave room for implementation judgment, solved enough that nothing critical is hand-waved, and bounded by the appetite set during framing.
+Shaping is getting to the "we've got it" moment — a shared understanding of what to build that is rough enough to leave implementation judgment to builders, solved enough that nothing critical is hand-waved, and bounded by the appetite set during framing.
 
-Shaping is not writing. The document that comes out is packaging: a way to bring others to the same understanding reached during the shaping session. The real work is the thinking, the sketching, and the back-and-forth that gets to the "we've got it" moment.
+Shaping is not a document exercise. The document that comes out is packaging: a way to bring people who weren't in the sessions to the same understanding. The real work is the live thinking, sketching, and back-and-forth that reaches the a-ha moment. Shaping cannot be done alone or by filling in a template.
 
-Before starting: read the concept document at `docs/concepts/[name].md`. The status must be `frame-go`. If the problem section is still vague, return to framing. Shaping without a clear frame produces the wrong solution.
+**Shaping requires senior technical people who know the codebase. Shaping without technical depth is the #1 failure mode. Projects shaped without it churn in build because of unanswered questions that were never surfaced.**
+
+**Before starting:** Read the concept document at `docs/concepts/[name].md`. The status must be `frame-go`. If the problem section is still vague, return to framing — shaping without a clear frame produces the wrong solution.
+
+## The Iron Law
+
+```
+APPETITE DOES NOT MOVE. SCOPE ADJUSTS TO FIT IT.
+```
+
+Violating the letter of this rule is violating the spirit of it. If the solution doesn't fit the appetite, scope must be cut or the problem must be reframed — the appetite does not flex.
 
 ## The Abstraction Discipline
 
-Shaped work lives at the fat marker sketch level. This is the hardest discipline to hold.
+Shaped work lives at the fat-marker sketch level. This is the hardest discipline to hold.
 
 **Keep:** Named building blocks, macro-level connections, flow topology, the wiring of how things work together.
 
 **Reject:** Visual designs, exact copy, database schemas, component libraries, API specs, implementation detail of any kind.
 
-A shaped solution is like the blueprint of a house: where the walls go, where the sink goes, where the pipes run. Not the tile, not the paint color, not the fixture styles. Those decisions happen later, during building, by the people doing the work.
+A shaped solution is the blueprint of a house: where the walls go, where the sink goes, where the pipes run. Not the tile, not the paint, not the fixtures. Those decisions happen during building, by the people doing the work.
 
-If the shaping is getting too detailed, stop and ask: is this a decision that must be made now, or can the builder make it? If the builder can make it, leave it out.
+```
+WHEN describing any element or flow step:
+  IF you are specifying visual design, exact copy, component names, database schemas, or API specs
+    → STOP, elevate the abstraction
+  Ask: can the builder make this decision without needing to understand the problem?
+  IF yes → leave it out of the shape
+```
 
-## Three Properties
+## The Iterative Boundary
 
-Every decision made during shaping should be tested against three properties. They apply throughout the session, not only at the end.
+Shaping regularly surfaces questions that require going back to the frame. This is expected — the understanding of both problem and solution deepens together. The first model is always wrong.
 
-**Rough:** Elements described at high abstraction. Room for the builder to make implementation decisions.
+```
+WHEN a question surfaces during shaping:
+  IF it concerns the solution (what should exist, how it connects, what the flow looks like)
+    → answer it here, stay in shaping
+  IF it concerns the problem (is this the right failure, does this cost what we thought, who actually has this)
+    → STOP, invoke frame skill, resolve the framing question
+    → resume shaping after frame-go is confirmed
+```
 
-**Solved:** All elements identified and connected. The user flow is clear end to end. Nothing critical is hand-waved.
+Shaping that continues over an unresolved framing question produces a shaped solution to the wrong problem.
 
-**Bounded:** The solution fits the appetite. Won't-dos are explicit. Every rabbit hole has a patch.
+When domain questions keep surfacing repeatedly, the right fix is not more round-trips between framing and shaping — it is bringing the domain expert into the shaping session so questions can be answered on the spot and the design can be revised in real time.
 
-Keep these in view as you work. If a step is producing something that fails one of these properties, stop and correct before moving on. A final check at the end catches less than ongoing discipline throughout.
+## Phase 1: Read the Frame
 
-## How to Shape
+**Goal:** Absorb the problem, appetite, and language before any solution thinking begins.
 
-### Step 1: Read the Frame
+Pay close attention to the language in the frame. The words used there must carry through shaping. If the frame says "missed payments," elements and breadboard should say "missed payments" — not "payment status" or "invoice errors." Language drift between frame and shape signals the solution is drifting from the problem.
 
-Absorb the problem, the affected segment, the current workaround, what goes wrong, and the appetite. Shaping happens inside those constraints. The appetite is fixed: scope adjusts to fit it.
+**Gate:** Appetite is fixed in mind. Frame language is noted. No element naming has begun.
 
-Pay attention to the language in the frame. The words used there are the words that must carry through shaping. If the frame says "missed payments," the elements and breadboard should say "missed payments," not "payment status" or "invoice errors." Language drift between frame and shape is a signal that the solution is drifting from the problem.
+## Phase 2: Name the Elements
 
-Shaping regularly surfaces questions that require going back to the frame. This is knowledge crunching: the shared understanding of the problem deepens through the back-and-forth between problem and solution. The first model is always wrong. Expect to refine the frame as shaping proceeds.
+**Goal:** Identify the high-level building blocks of the solution.
 
-The key is recognizing which kind of question has surfaced. A shaping question is about the solution: what should this flow look like? What should the system do here? Those are answered in shaping. A framing question is about the problem: is this the right failure to address? Does this workaround actually cost what we thought? Those belong back in framing. When they surface during shaping, pause and take them back. Shaping that continues over an unresolved framing question produces a shaped solution to the wrong problem.
+Elements are not screens, components, or database tables. They are named concepts describing what the solution is made of. Aim for 3–7. More than that usually means the solution is too big for the appetite or not yet abstracted enough.
 
-### Step 2: Name the Elements
+For each element: what is it, and what does it do for the user? One or two sentences maximum. If it takes more, the element is too detailed or needs to be split.
 
-Elements are the high-level building blocks of the solution. They are not screens, not components, not database tables. They are named concepts that describe what the solution is made of.
+Name elements in the domain's language. An element name the person who lives with the problem would not recognize is a warning sign.
 
-Aim for 3 to 7 elements. More than that usually means the solution is too big for the appetite or not yet abstracted enough.
+**Gate:** 3–7 elements, each describable in one or two sentences, named in domain language.
 
-For each element, answer: what is it, and what does it do for the user? One or two sentences maximum. If it takes more, the element is probably too detailed or needs to be split.
+## Phase 3: Breadboard the Flow
 
-Name elements in the domain's language. An element name that the person who knows the problem would not recognize is a warning sign: either the element is too technical, or the solution has drifted from the problem. The right name usually comes from the frame itself. If "missed payments" is the problem, "Missed Payments Panel" is a better element name than "Dashboard Widget" or "Invoice Status Component."
+**Goal:** Map how users move through the solution using places, affordances, and connections — nothing more.
 
-Getting the names right is part of the shaping work. A well-named element makes the solution legible to anyone who understands the problem, not only to the people who will build it.
-
-### Step 3: Breadboard the Flow
-
-Breadboarding maps how users move through the solution using three components:
-
-**Places:** screens, dialogs, states, or any location where the user finds themselves.
-
-**Affordances:** buttons, fields, links, messages, or any thing the user can interact with or read at that place.
-
-**Connections:** arrows that show where an affordance takes the user.
+- **Places:** screens, dialogs, states — anywhere the user finds themselves
+- **Affordances:** buttons, fields, links, messages — anything the user can interact with or read
+- **Connections:** where an affordance takes the user
 
 ```
 Place Name
@@ -80,57 +96,104 @@ Next Place
   action → Another Place
 ```
 
-Breadboard the critical path first: the flow the user takes when everything works. Then breadboard any significant branches or edge cases that the appetite allows for.
+Breadboard the critical path first. Then breadboard significant branches the appetite allows for.
 
-The breadboard is not a wireframe. No layout, no visual design, no exact copy. Just the topology: what exists where, and how it connects.
+**Gate:** No layout, no visual design, no exact copy, no component names. Only topology: what exists where and how it connects.
 
-A sharp test: if your breadboard contains column widths, component names from a design system, spacing notes, or any description of how something looks rather than what it is and where it leads, you have gone too detailed. Strip it back to places, affordances, and connections. Visual decisions belong to the builder, not the shaper.
+```
+IF the breadboard contains column widths, component names from a design system, styling notes,
+or descriptions of how something looks rather than what it is and where it goes
+  → strip it back to places, affordances, and connections
+```
 
-### Step 4: Find the Rabbit Holes
+## Phase 4: Find the Rabbit Holes
 
-Rabbit holes are things that seem small but could unexpectedly expand scope. Left unresolved, they become time bombs that blow up build cycles from the inside, usually in the last week when there is no room to absorb them.
+**Goal:** Surface what could unexpectedly expand scope, and patch every one before moving on.
 
-For each rabbit hole, a specific patch is required: a constraint that prevents it from derailing the work.
+Rabbit holes are things that seem small but could blow up a build cycle from the inside. Any rabbit hole not patched during shaping is a time bomb — it will surface in week three of a six-week cycle when there is no room to absorb it.
 
-Ask:
+For each rabbit hole:
 - What parts of this solution touch things we do not fully understand?
 - What edge cases could force a much bigger implementation than expected?
 - Where does this solution brush up against existing complexity?
 
-Each rabbit hole entry states the risk and the patch.
+Each rabbit hole entry states the risk and its patch — a specific constraint that prevents it from derailing the build.
 
-An identified rabbit hole without a patch is not a shaped solution. If a rabbit hole cannot be patched with a reasonable constraint, either the solution must be redesigned to avoid it, or the problem must be reframed to take it out of scope. Do not write Shape Go with open rabbit holes.
+**Gate:** Every identified rabbit hole has a specific patch. No open rabbit holes.
 
-### Step 5: Define Dos and Won't-Dos
+```
+IF a rabbit hole has no patch:
+  → either redesign the solution to avoid it
+  → or reframe the problem to take it out of scope
+  → do not proceed with an open rabbit hole
+```
 
-Won't-dos are intentional exclusions. They are deliberate decisions that protect the appetite, each with a rationale.
+## Phase 5: Define Dos and Won't-Dos
 
-Dos confirm what is explicitly in scope. They close off ambiguity about what the shaped solution covers.
+**Goal:** Make every reasonable scope assumption explicit.
+
+Won't-dos are intentional exclusions that protect the appetite, each with a rationale. Dos confirm what is explicitly in scope.
 
 Go through the elements and breadboard and ask: what could someone reasonably assume is included that we are not building? Make those assumptions explicit as won't-dos.
 
-## Three Properties Check
+**Gate:** Every reasonable scope assumption is named explicitly — nothing left to inference.
 
-Before writing to the document, run the final check against all three properties:
+## Phase 6: Three Properties Check
 
-**Rough:** Is every element described at high abstraction? Does the breadboard show topology without visual design? Is there room for the builder to make implementation decisions? If too detailed, elevate the abstraction.
+**Goal:** Verify the shaped solution is ready before writing to the document.
 
-**Solved:** Are all elements identified and connected? Is the user flow clear end to end? Is anything critical hand-waved or marked TBD? If something is unclear, work it out now. Unresolved questions in shaping become blockers in building.
+Apply these throughout shaping, not only at the end — ongoing discipline catches more than a final check.
 
-**Bounded:** Does the solution fit the appetite? Are the won't-dos explicit? Does every rabbit hole have a patch? If any rabbit hole is listed without a patch, the solution is not bounded: do not proceed to Shape Go until it is resolved.
+**Rough:** Is every element described at high abstraction? Is there room for the builder to make implementation decisions? If too detailed, elevate the abstraction.
 
-If any property fails, keep shaping. Do not write a shape-go that is not actually shaped.
+**Solved:** Are all elements identified and connected? Is the user flow clear end to end? Is anything critical hand-waved or marked TBD? Unresolved questions in shaping become blockers in building — work them out now.
+
+**Bounded:** Does the solution fit the appetite? Are the won't-dos explicit? Does every rabbit hole have a patch?
+
+**Gate:** All three properties pass.
+
+```
+IF any property fails → keep shaping. Do not write a shape-go that is not actually shaped.
+```
 
 ## Output
 
-When the three properties pass, add to the Solution section of `docs/concepts/[name].md` and set `status: shape-go`.
+When the three properties pass, write to the Solution section of `docs/concepts/[name].md` and set `status: shape-go`.
 
-The Elements section lists each element with a one or two sentence description.
+**Shape Go means:** "We can give this to someone to build and they will know what to do. No material unknowns from a technical or interaction standpoint."
 
-The Breadboard section contains the full breadboard notation for all relevant flows.
+The document captures the a-ha moment in packaging form. It should bring anyone who reads it to the same understanding reached in the shaping sessions — without them having been there.
 
-The Rabbit Holes section lists each risk and its patch.
+## Red Flags
 
-The Dos section lists what is explicitly in scope.
+| If you're thinking... | Do this |
+|---|---|
+| "I'll shape this from notes without a technical person" | STOP — shaping without technical depth produces undershaped work |
+| "I'm continuing but there's a framing question I haven't resolved" | STOP — return to framing, resume after frame-go confirmed |
+| "The rabbit hole might not matter in practice" | STOP — every rabbit hole needs a patch |
+| "I'll add design details to make it clearer" | STOP — you've left fat-marker level |
+| "The element count is over 7 but they're all necessary" | The solution is too big for the appetite, or not yet abstracted enough |
+| "I'm using different words than the frame used" | Language drift — return to frame language |
+| "I'll mark this TBD and resolve it in building" | Unresolved questions in shaping become blockers in building |
 
-The Won't-Dos section lists what is explicitly out, each with a brief rationale.
+## Rationalization Table
+
+| Excuse | Reality |
+|---|---|
+| "The appetite can flex a little" | Appetite is fixed. Scope adjusts. Not the other way. |
+| "A non-technical shaper is fine" | The #1 failure mode. Projects churn because of unanswered technical questions. |
+| "This detail is necessary for clarity" | If the builder can make the decision, leave it out |
+| "The rabbit hole probably won't come up" | Rabbit holes always come up. Patch them now or pay for it in week three. |
+| "We can figure out the framing question as we go" | Shaping over an unresolved framing question produces the wrong solution |
+| "The document IS the shaping" | The document is packaging. The shaping is the live sessions and the thinking. |
+
+## Quick Reference
+
+| Phase | Key Activity | Gate |
+|---|---|---|
+| 1. Read the Frame | Absorb appetite and language | Appetite fixed in mind, language noted |
+| 2. Name Elements | 3–7 building blocks in domain language | Each in 1–2 sentences, no technical terms |
+| 3. Breadboard | Places, affordances, connections only | No visual design, no component names |
+| 4. Rabbit Holes | Identify risks, patch each one | Every rabbit hole has a specific patch |
+| 5. Dos and Won't-Dos | Make all scope assumptions explicit | Nothing left to inference |
+| 6. Three Properties | Rough, solved, bounded | All three pass before writing |
