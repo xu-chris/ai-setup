@@ -19,13 +19,15 @@ NO SOLUTION TERRITORY IN FRAMING
 
 Violating the letter of this rule is violating the spirit of it. If a breadboard appears, if a technical option is discussed, if implementation is mentioned — stop. Return to the problem.
 
+When the user introduces solution ideas during framing, name the idea and park it explicitly: "That belongs in shaping — I'll note it. Back to the problem: [return to the question at hand]." Do not absorb solution territory into the framing conversation.
+
 ## Phase 1: Confirm the Impetus
 
 **Goal:** Establish that there is a business reason to spend time on this candidate now.
 
 Someone already has a sense of urgency: a customer at risk, a recurring complaint, a strategic shift, a deal being lost. Find it. Framing without impetus produces a conversation that circles without landing.
 
-Also ask for the appetite signal early — how much time would be worth spending if the problem turns out to be real? Appetite constrains the entire framing conversation and defines what counts as a good enough answer.
+Ask for the appetite signal before working the seven topics — how much time would be worth spending if the problem turns out to be real? Appetite constrains the entire framing conversation and defines what counts as a good enough answer.
 
 **Gate:** A business reason for investigating this problem *now* is explicit, and an appetite signal has been named.
 
@@ -38,7 +40,7 @@ IF appetite has not been named → ask for it before working the questions
 
 **Goal:** Narrow the candidate from a label to a specific failure with a specific cost.
 
-Framing is active detective work — live data, customer research, subject matter experts. The raw request is just the starting label. Work through these in order, and don't move on until each question has a real answer. Push back on vague or label-level responses.
+Framing is active detective work — live data, customer research, subject matter experts. The raw request is just the starting label. Cover all seven topics through the conversation. The questioning approach can be organic — follow what the person in the room shows you, follow live data, follow what the subject matter expert reveals. Do not declare Frame Go until each topic has a specific, non-label answer. Push back on vague responses.
 
 **1. What is the raw request?**
 Write it exactly as it came in: "Improve the dashboard." "Users are churning." This is the label, not the problem.
@@ -61,7 +63,7 @@ A well-framed problem can be handed to a shaper who knows exactly what to invest
 **7. Is the appetite still right?**
 Given what you now know, does the original appetite match the problem's actual size?
 
-**Gate:** All seven questions have specific, non-label answers. The problem is described as a failure with a cost for a specific segment — not a feature request or label.
+**Gate:** Do not move to Phase 3 until all seven topics have specific, non-label answers. The problem must be described as a failure with a cost for a specific segment — not a feature request or label.
 
 ```
 IF the problem is still stated as a label ("improve X", "add notifications") → strip the label, narrow further
@@ -92,7 +94,7 @@ When the problem is still too broad:
 
 Vague words ("improve," "better," "notifications") give way to specific domain terms ("payment recovery," "SSO-verified identity," "missed invoices") when framing is done. These are the words the people who live with the problem would use naturally.
 
-**Test:** State the problem in one sentence using only the words the affected people would use. If anyone who understands the domain nods at it without needing explanation, framing is done. If the sentence still uses product terms the affected people would not reach for, it is not done.
+**Test:** Write the problem in one sentence using only the words the affected people would use. Show it to the person in the room. Ask: "Does that capture it?" Do not declare Frame Go until they confirm. If the sentence still uses product terms the affected people would not reach for, revise and repeat.
 
 This language carries into shaping. Elements, breadboards, and won't-dos must use the same words as the frame. Language drift between frame and shape is a signal the solution is drifting from the problem.
 
@@ -105,6 +107,19 @@ IF language is still vague after narrowing → find the domain expert who has th
 ## Output
 
 When the three phases pass, write the concept document to `docs/concepts/[name].md`. Fill in the Frame section. Leave Solution, Bet, and Build as empty placeholders — shaping, betting, and building will complete them.
+
+Name the document after the sharpened problem domain, not the anticipated solution. The name should reflect the failure being framed: `payment-recovery.md`, not `dashboard-redesign.md`.
+
+**Do not write the Frame section until all of the following are confirmed:**
+- Appetite has been explicitly named
+- Specific segment identified — not "all users"
+- Workaround named: what they do today instead
+- Cost named: what goes wrong because of the workaround
+- "Why now?" answered with a specific trigger
+- One-sentence problem statement confirmed by the person in the room
+- Frame section contains no solution territory
+
+Only then write the Frame section.
 
 ```markdown
 ---
@@ -167,6 +182,8 @@ Set `status: frame-go` when the checkpoint passes. Set `status: candidate` and n
 
 **Frame Go means:** "We are aligned on the problem and outcome, and we understand this enough to shape it."
 
+Frame Go is not permanent. Shaping regularly surfaces questions that cannot be answered without returning to the problem. When shaping sends a question back, return to framing to answer it before resuming the shape. This is expected, not a failure.
+
 ## Red Flags
 
 | If you're thinking... | Do this |
@@ -194,4 +211,4 @@ Set `status: frame-go` when the checkpoint passes. Set `status: candidate` and n
 |---|---|---|
 | 1. Impetus | Business reason + appetite signal | Both explicit before working questions |
 | 2. Work the Problem | Seven questions, flip technique | All 7 answered specifically; failure + cost + segment |
-| 3. Language Precision | One-sentence domain-language test | Anyone who knows the domain nods at it |
+| 3. Language Precision | Write one-sentence problem statement; show to user | Person in the room confirms it |
