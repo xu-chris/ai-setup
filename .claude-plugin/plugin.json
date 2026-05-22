@@ -1,6 +1,5 @@
 {
   "name": "shape-up",
-  "displayName": "Shape Up for Claude Code",
   "description": "Shape Up workflow plugin for Claude Code — skills and commands for appetite-driven development: frame, shape, bet, kickoff, and scope.",
   "version": "0.1.0",
   "author": {
