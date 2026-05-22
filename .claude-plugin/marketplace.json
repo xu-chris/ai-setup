@@ -1,0 +1,33 @@
+{
+  "name": "xu-chris",
+  "metadata": {
+    "description": "Claude Code plugins by Chris Xu — methodology and tooling integrations for structured software development"
+  },
+  "owner": {
+    "name": "Chris Xu"
+  },
+  "plugins": [
+    {
+      "name": "shape-up",
+      "source": "./",
+      "description": "Shape Up methodology for Claude Code — frame, shape, bet, kickoff, and scope appetite-driven development cycles.",
+      "author": {
+        "name": "Chris Xu"
+      },
+      "homepage": "https://github.com/xu-chris/Shape-Up-for-Claude-Code",
+      "repository": "https://github.com/xu-chris/Shape-Up-for-Claude-Code",
+      "license": "MIT",
+      "keywords": [
+        "shape-up",
+        "product-methodology",
+        "framing",
+        "shaping",
+        "betting",
+        "appetite-driven",
+        "development-workflow",
+        "scope"
+      ],
+      "category": "productivity"
+    }
+  ]
+}

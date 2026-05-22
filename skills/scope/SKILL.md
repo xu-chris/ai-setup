@@ -144,6 +144,16 @@ Add tasks inline to the relevant scope in `docs/concepts/[name].scopes.md`:
 
 After adding all tasks, update the scope's status from `building` to `in progress`.
 
+```
+IF superpowers is available:
+  → invoke superpowers:writing-plans for this scope
+    The scope description, demoable outcome, and "Done when:" conditions are the spec
+    writing-plans adds the implementation layer: file structure, TDD task sequence, exact code, exact commands
+    Shape Up ends here — building begins with superpowers
+ELSE:
+  → implement the tasks directly using the confirmed task list and acceptance criteria as the guide
+```
+
 ## Red Flags
 
 | If you're thinking... | Do this |

@@ -1,10 +1,22 @@
 {
   "name": "shape-up",
-  "description": "Shape Up workflow plugin for Claude Code — skills, agents, and commands for building better software through appetite-driven development cycles.",
+  "displayName": "Shape Up for Claude Code",
+  "description": "Shape Up workflow plugin for Claude Code — skills and commands for appetite-driven development: frame, shape, bet, kickoff, and scope.",
   "version": "0.1.0",
   "author": {
     "name": "Chris Xu"
   },
   "homepage": "https://github.com/xu-chris/Shape-Up-for-Claude-Code",
-  "license": "MIT"
+  "repository": "https://github.com/xu-chris/Shape-Up-for-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "shape-up",
+    "product-methodology",
+    "framing",
+    "shaping",
+    "betting",
+    "appetite-driven",
+    "development-workflow",
+    "scope"
+  ]
 }

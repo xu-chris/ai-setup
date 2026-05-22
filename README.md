@@ -9,9 +9,11 @@ This project aims to adopt Shape Up for clarifying the concept for developing ag
 
 **Installation**
 
+Add the marketplace, then install the plugin:
 
 ```
-/plugin install @xu-chris/shape-up
+/plugin marketplace add xu-chris/Shape-Up-for-Claude-Code
+/plugin install shape-up@xu-chris
 ```
 
 
