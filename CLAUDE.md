@@ -19,6 +19,7 @@ Specialist skills (invoked from within a phase, not standalone phases):
 - `skills/breadboarding/` — invoked from within shaping; writes the breadboard into `shape.md`
 - `skills/breadboard-reflection/` — invoked after implementation to sync the breadboard to code
 - `skills/ux-design/` — invoked from within shaping for UI behavior and copy
+- `skills/dag/` — invoked by kickoff (scope DAG into slices.md) and scope (task DAG into S#-plan.md)
 
 ### The concept folder
 

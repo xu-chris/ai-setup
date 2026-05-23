@@ -160,6 +160,8 @@ shape: docs/concepts/[name]/shape.md
 
 Update `frame.md` frontmatter to set `status: building` and add a link to `slices.md`.
 
+Then invoke `shape-up:dag` to generate the scope dependency graph. The DAG is written into the Sequence section of `slices.md`. It makes the build order and parallel opportunities visible before any code is written.
+
 ## Red Flags
 
 | If you're thinking... | Do this |

@@ -160,6 +160,8 @@ Then append the confirmed task list:
 
 After writing the plan file, update the slice entry in `slices.md` to set its status to `in progress` and add a link to the plan file.
 
+Then invoke `shape-up:dag` to generate the task dependency graph. The DAG is written at the end of `S#-plan.md`. It makes the task execution order and parallel opportunities visible before implementation begins.
+
 ```
 IF superpowers is available:
   → invoke superpowers:writing-plans for this scope
