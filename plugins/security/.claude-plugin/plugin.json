@@ -1,0 +1,20 @@
+{
+  "name": "security",
+  "version": "0.1.0",
+  "description": "Security hardening skills — GitHub Actions pipeline hardening and CI security.",
+  "author": {
+    "name": "Chris Xu"
+  },
+  "homepage": "https://github.com/xu-chris/ai-setup",
+  "repository": "https://github.com/xu-chris/ai-setup",
+  "license": "MIT",
+  "skills": [
+    "./skills/harden-github-actions/"
+  ],
+  "keywords": [
+    "security",
+    "github-actions",
+    "ci",
+    "hardening"
+  ]
+}

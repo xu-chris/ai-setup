@@ -1,0 +1,32 @@
+{
+  "name": "shape-up",
+  "version": "0.1.0",
+  "description": "Shape Up project workflow — strategy, framing, shaping, betting, kickoff, scope breakdown, breadboarding, and dependency mapping.",
+  "author": {
+    "name": "Chris Xu"
+  },
+  "homepage": "https://github.com/xu-chris/ai-setup",
+  "repository": "https://github.com/xu-chris/ai-setup",
+  "license": "MIT",
+  "skills": [
+    "./skills/frame/",
+    "./skills/shape/",
+    "./skills/bet/",
+    "./skills/kickoff/",
+    "./skills/scope/",
+    "./skills/breadboarding/",
+    "./skills/breadboard-reflection/",
+    "./skills/dag/",
+    "./skills/facilitating-strategy/"
+  ],
+  "keywords": [
+    "shape-up",
+    "product-methodology",
+    "framing",
+    "shaping",
+    "betting",
+    "appetite-driven",
+    "development-workflow",
+    "scope"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "interface-design",
+  "version": "0.1.0",
+  "description": "Interface design guidance — UX behavior, copy, error states, empty states, and usability audits.",
+  "author": {
+    "name": "Chris Xu"
+  },
+  "homepage": "https://github.com/xu-chris/ai-setup",
+  "repository": "https://github.com/xu-chris/ai-setup",
+  "license": "MIT",
+  "skills": [
+    "./skills/ux-design/"
+  ],
+  "keywords": [
+    "ux",
+    "interaction-design",
+    "usability",
+    "copywriting",
+    "audit"
+  ]
+}

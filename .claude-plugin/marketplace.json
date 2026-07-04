@@ -1,5 +1,5 @@
 {
-  "name": "xu-chris",
+  "name": "ai-setup",
   "metadata": {
     "description": "Claude Code plugins by Chris Xu — methodology and tooling integrations for structured software development"
   },
@@ -9,13 +9,13 @@
   "plugins": [
     {
       "name": "shape-up",
-      "source": "./",
-      "description": "Shape Up methodology for Claude Code — frame, shape, bet, kickoff, and scope appetite-driven development cycles.",
+      "source": "./plugins/shape-up",
+      "description": "Shape Up project workflow — strategy, frame, shape, bet, kickoff, scope, breadboard, and dependency-map appetite-driven development cycles.",
       "author": {
         "name": "Chris Xu"
       },
-      "homepage": "https://github.com/xu-chris/Shape-Up-for-Claude-Code",
-      "repository": "https://github.com/xu-chris/Shape-Up-for-Claude-Code",
+      "homepage": "https://github.com/xu-chris/ai-setup",
+      "repository": "https://github.com/xu-chris/ai-setup",
       "license": "MIT",
       "keywords": [
         "shape-up",
@@ -28,6 +28,103 @@
         "scope"
       ],
       "category": "productivity"
+    },
+    {
+      "name": "interface-design",
+      "source": "./plugins/interface-design",
+      "description": "Interface design skill for UX behavior, user-facing copy, empty states, errors, and audits.",
+      "author": {
+        "name": "Chris Xu"
+      },
+      "homepage": "https://github.com/xu-chris/ai-setup",
+      "repository": "https://github.com/xu-chris/ai-setup",
+      "license": "MIT",
+      "keywords": [
+        "interface-design",
+        "interaction-design",
+        "usability",
+        "copywriting",
+        "audit"
+      ],
+      "category": "productivity"
+    },
+    {
+      "name": "frontend",
+      "source": "./plugins/frontend",
+      "description": "Frontend craft skill for semantic HTML, CSS architecture, layout, accessibility, and component patterns.",
+      "author": {
+        "name": "Chris Xu"
+      },
+      "homepage": "https://github.com/xu-chris/ai-setup",
+      "repository": "https://github.com/xu-chris/ai-setup",
+      "license": "MIT",
+      "keywords": ["frontend", "html", "css", "accessibility", "components"],
+      "category": "productivity"
+    },
+    {
+      "name": "ai",
+      "source": "./plugins/ai",
+      "description": "AI setup skills for crafting agent skills and writing installation docs for autonomous execution.",
+      "author": {
+        "name": "Chris Xu"
+      },
+      "homepage": "https://github.com/xu-chris/ai-setup",
+      "repository": "https://github.com/xu-chris/ai-setup",
+      "license": "MIT",
+      "keywords": ["agent-skills", "install-docs", "ai-setup", "plugins"],
+      "category": "productivity"
+    },
+    {
+      "name": "security",
+      "source": "./plugins/security",
+      "description": "Security hardening skills for GitHub Actions pipeline hardening and CI security.",
+      "author": {
+        "name": "Chris Xu"
+      },
+      "homepage": "https://github.com/xu-chris/ai-setup",
+      "repository": "https://github.com/xu-chris/ai-setup",
+      "license": "MIT",
+      "keywords": ["security", "github-actions", "ci", "hardening"],
+      "category": "security"
+    },
+    {
+      "name": "elixir",
+      "source": "./plugins/elixir",
+      "description": "Elixir, Phoenix, Ash, and BEAM project skills for architecture, Ash code, security, cleanup, and dependency updates.",
+      "author": {
+        "name": "Chris Xu"
+      },
+      "homepage": "https://github.com/xu-chris/ai-setup",
+      "repository": "https://github.com/xu-chris/ai-setup",
+      "license": "MIT",
+      "keywords": ["elixir", "phoenix", "ash", "beam", "security"],
+      "category": "development"
+    },
+    {
+      "name": "tools",
+      "source": "./plugins/tools",
+      "description": "Tool operation skills for Firecrawl web search, scraping, research, and content extraction.",
+      "author": {
+        "name": "Chris Xu"
+      },
+      "homepage": "https://github.com/xu-chris/ai-setup",
+      "repository": "https://github.com/xu-chris/ai-setup",
+      "license": "MIT",
+      "keywords": ["tools", "firecrawl", "web-search", "scraping", "research"],
+      "category": "productivity"
+    },
+    {
+      "name": "delivery",
+      "source": "./plugins/delivery",
+      "description": "Delivery workflow skills for fully implementing Basecamp cards, expert code review, isolated worktrees, small verified commits, card updates, and PR handoff.",
+      "author": {
+        "name": "Chris Xu"
+      },
+      "homepage": "https://github.com/xu-chris/ai-setup",
+      "repository": "https://github.com/xu-chris/ai-setup",
+      "license": "MIT",
+      "keywords": ["delivery", "basecamp", "cards", "implementation", "pull-requests"],
+      "category": "development"
     }
   ]
 }

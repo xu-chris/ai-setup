@@ -1,0 +1,25 @@
+{
+  "name": "elixir",
+  "version": "0.1.0",
+  "description": "Elixir, Phoenix, Ash, and BEAM project skills — architecture, Ash code, security, cleanup, and dependency updates.",
+  "author": {
+    "name": "Chris Xu"
+  },
+  "homepage": "https://github.com/xu-chris/ai-setup",
+  "repository": "https://github.com/xu-chris/ai-setup",
+  "license": "MIT",
+  "skills": [
+    "./skills/elixir-architect/",
+    "./skills/writing-ash-code/",
+    "./skills/beam-security-hardening/",
+    "./skills/codebase-cleanup/",
+    "./skills/updating-dependencies/"
+  ],
+  "keywords": [
+    "elixir",
+    "phoenix",
+    "ash",
+    "beam",
+    "security"
+  ]
+}

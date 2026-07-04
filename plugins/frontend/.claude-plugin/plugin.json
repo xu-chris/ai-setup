@@ -1,0 +1,21 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "description": "Frontend craft guidance — semantic HTML, CSS architecture, layout, accessibility, and component patterns.",
+  "author": {
+    "name": "Chris Xu"
+  },
+  "homepage": "https://github.com/xu-chris/ai-setup",
+  "repository": "https://github.com/xu-chris/ai-setup",
+  "license": "MIT",
+  "skills": [
+    "./skills/frontend-craft/"
+  ],
+  "keywords": [
+    "frontend",
+    "html",
+    "css",
+    "accessibility",
+    "components"
+  ]
+}

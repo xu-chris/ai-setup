@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+root="$(cd "$(dirname "$0")/.." && pwd)"
+
+"$root/scripts/validate-structure"
+bash "$root/tests/test-ripple-check.sh"

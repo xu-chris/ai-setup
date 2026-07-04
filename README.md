@@ -1,96 +1,146 @@
-# Shape Up for Claude Code
+# My AI Setup
 
-> Work in progress — tested and iteratively improved.
+AI setup for product work, split into installable plugins plus a flat browsing layer.
 
-Regardless if you work with developers or developing agents, only clarity of concepts leads to desired, on-point solutions. The [Shape Up](https://basecamp.com/shapeup) product development methodology by 37Signals is a systematic way of creating such clarity for product teams.
+This repository follows the same structural idea as Basecamp's `house-skills`: real skill files live inside their owning plugin, while top-level `skills/` contains symlinks for a unified view.
 
-This project adopts Shape Up for clarifying concepts before building with agents. By focusing on shaping concepts well in written form, you ship what you can maintain, not a half-assed product.
+## Install
 
+Install from the marketplace, then choose the plugin you need:
 
-## How this differs from similar tools
-
-**vs. Ryan Singer's [shaping-skills](https://github.com/rjs/shaping-skills):** Singer's skills cover the shaping phase in depth - breadboarding, fit checks, affordance tables. This plugin takes those mechanics and embeds them in the full Shape Up lifecycle: framing comes first, betting gates the build, kickoff maps the work into slices, and scope breakdown drives execution one slice at a time. Singer's skills are the sharpest part of the shaping phase here; this plugin wraps the rest of the methodology around them.
-
-**vs. [superpowers](https://github.com/obra/superpowers):** Superpowers is a development workflow plugin - it helps you implement once you know what to build (TDD, subagent-driven development, planning, code review). This plugin answers the earlier question: what should we build, and why? The two are complementary. Shape Up handles the pre-build phases; superpowers handles execution. The scope skill explicitly hands off to superpowers when both are installed.
-
-**Installation**
-
-Add the marketplace, then install the plugin:
-
-```
-/plugin marketplace add xu-chris/Shape-Up-for-Claude-Code
-/plugin install shape-up@xu-chris
+```bash
+/plugin marketplace add xu-chris/ai-setup
+/plugin install shape-up@ai-setup
+/plugin install interface-design@ai-setup
+/plugin install frontend@ai-setup
+/plugin install ai@ai-setup
+/plugin install security@ai-setup
+/plugin install elixir@ai-setup
+/plugin install tools@ai-setup
+/plugin install delivery@ai-setup
 ```
 
-**Skills and commands**
+Other agents can install the standalone skills view:
 
-| Command | What it does |
-|---|---|
-| `/shape-up:frame` | Examine a candidate idea and produce a clear problem statement |
-| `/shape-up:shape` | Define the solution: elements, breadboard, rabbit holes, dos and won't-dos |
-| `/shape-up:bet` | Make the deliberate decision to commit build time to a shaped concept |
-| `/shape-up:kickoff` | Tour the concept with the team and map it into vertical scopes |
-| `/shape-up:scope` | Break one scope into concrete tasks with acceptance criteria |
-| `/shape-up:ux-design` | Design UI behavior, write user-facing copy, audit interfaces for usability |
-| `/shape-up:breadboarding` | Surface UI and code affordances, run fit check, generate wiring diagram |
-| `/shape-up:breadboard-reflection` | Sync a breadboard to implementation and detect design smells |
-| `/shape-up:dag` | Generate a dependency graph for scopes or tasks |
+```bash
+npx skills add xu-chris/ai-setup
+```
 
+Use `shape-up` for dedicated project setup. Use `elixir` for Elixir/Phoenix/Ash/BEAM projects. Use `delivery` when Basecamp cards are the work queue. Use `interface-design`, `frontend`, `ai`, `security`, and `tools` as user-level setups when you want those capabilities available across projects.
+
+## Plugins
+
+| Plugin | Use | Contents |
+| --- | --- | --- |
+| `shape-up` | Dedicated project workflow | Strategy facilitation, frame, shape, bet, kickoff, scope, breadboarding, breadboard reflection, DAG |
+| `interface-design` | User-level design setup | UX design and usability audit skill |
+| `frontend` | User-level frontend setup | Semantic HTML, CSS architecture, layout, accessibility, component patterns |
+| `ai` | AI setup authoring | Skill crafting and install documentation |
+| `security` | CI security setup | GitHub Actions hardening |
+| `elixir` | Elixir/Phoenix/Ash/BEAM setup | Architecture, Ash code, BEAM security, cleanup, dependency updates |
+| `tools` | Tool operation setup | Firecrawl web search, scraping, research, content extraction |
+| `delivery` | Card delivery setup | Basecamp card implementation, expert code review, worktree isolation, verified commits, PR handoff |
+
+## Skills
+
+| Skill | Plugin | Description |
+| --- | --- | --- |
+| [frame](skills/frame) | shape-up | Turn a raw idea, request, or complaint into a clear problem frame |
+| [shape](skills/shape) | shape-up | Define a solution at Shape Up abstraction: rough, solved, bounded |
+| [bet](skills/bet) | shape-up | Decide whether shaped work deserves protected build time |
+| [kickoff](skills/kickoff) | shape-up | Move a bet into build by mapping vertical scopes |
+| [scope](skills/scope) | shape-up | Break one scope into concrete tasks at the start of that scope |
+| [breadboarding](skills/breadboarding) | shape-up | Prototype the wiring: places, affordances, stores, flows |
+| [breadboard-reflection](skills/breadboard-reflection) | shape-up | Sync breadboards to implementation and inspect design smells |
+| [dag](skills/dag) | shape-up | Render scope or task dependency graphs |
+| [facilitating-strategy](skills/facilitating-strategy) | shape-up | Develop, sharpen, and pressure-test real strategy before shaping work |
+| [ux-design](skills/ux-design) | interface-design | Design UI behavior, copy, errors, empty states, and audits |
+| [frontend-craft](skills/frontend-craft) | frontend | Write and review semantic, accessible HTML and maintainable CSS |
+| [skill-crafting](skills/skill-crafting) | ai | Create, edit, and refine agent skills through co-development and eval loops |
+| [install-md](skills/install-md) | ai | Create installation docs optimized for autonomous agent execution |
+| [harden-github-actions](skills/harden-github-actions) | security | Resolve zizmor warnings and harden GitHub Actions workflows |
+| [elixir-architect](skills/elixir-architect) | elixir | Design Elixir/Phoenix/Ash architecture and handoff documentation |
+| [writing-ash-code](skills/writing-ash-code) | elixir | Write production-grade Ash resources, actions, policies, forms, and jobs |
+| [beam-security-hardening](skills/beam-security-hardening) | elixir | Harden BEAM/Phoenix code, deployments, LiveView, and Zero Trust decisions |
+| [codebase-cleanup](skills/codebase-cleanup) | elixir | Run focused BEAM cleanup and remediation passes |
+| [updating-dependencies](skills/updating-dependencies) | elixir | Update Elixir/Phoenix dependencies safely |
+| [firecrawl](skills/firecrawl) | tools | Use Firecrawl CLI for web search, scraping, research, and extraction |
+| [programming-a-card](skills/programming-a-card) | delivery | Take a Basecamp card from ready to implemented with evidence, review, PR, and card updates |
+| [code-review-expert](skills/code-review-expert) | delivery | Review diffs with senior-engineer rigor for bugs, architecture, security, tests, and removal candidates |
+
+## Commands
+
+Top-level `commands/` mirrors plugin commands with symlinks for browsing.
+
+| Command | Plugin | What it does |
+| --- | --- | --- |
+| `/shape-up:frame` | shape-up | Examine a candidate idea and produce a problem statement |
+| `/shape-up:shape` | shape-up | Define solution elements, breadboard, rabbit holes, dos, and won't-dos |
+| `/shape-up:bet` | shape-up | Decide whether to commit build time |
+| `/shape-up:kickoff` | shape-up | Tour the concept and map vertical scopes |
+| `/shape-up:scope` | shape-up | Break one scope into concrete tasks |
+| `/shape-up:dag` | shape-up | Generate a dependency graph for scopes or tasks |
+
+## Structure
+
+```text
+plugins/
+  shape-up/
+    .claude-plugin/plugin.json
+    commands/
+    hooks/
+    skills/
+  interface-design/
+    .claude-plugin/plugin.json
+    skills/
+  frontend/
+    .claude-plugin/plugin.json
+    skills/
+  ai/
+    .claude-plugin/plugin.json
+    skills/
+  security/
+    .claude-plugin/plugin.json
+    skills/
+  elixir/
+    .claude-plugin/plugin.json
+    skills/
+  tools/
+    .claude-plugin/plugin.json
+    skills/
+  delivery/
+    .claude-plugin/plugin.json
+    skills/
+skills/      # symlinks to plugins/{plugin}/skills/{skill}
+commands/    # symlinks to plugins/shape-up/commands/{command}.md
+scripts/
+bin/
+tests/
+```
+
+Real files belong inside `plugins/{plugin}/`. The top-level `skills/` directory must contain only symlinks. This keeps plugin extraction self-contained and still gives agents and humans one flat skill index.
+
+Run validation before publishing:
+
+```bash
+bin/ci
+```
 
 ## Hooks
 
-**Ripple check** fires automatically whenever Claude edits a shaping document. It injects a reminder into Claude's context before it continues, prompting it to keep downstream documents consistent:
+`shape-up` includes a ripple-check hook. It fires when a Markdown file carries `shaping: true` in the first five lines of frontmatter and reminds the agent to keep downstream shaping documents consistent:
 
-- Changed a breadboard diagram? Update the 4 affordance tables in `shape.md` first, then re-render the Mermaid diagram.
-- Changed requirements (R) in `shape.md`? Update the Fit Check; update `slices.md` if the winning shape changes.
-- Changed shape parts (S) in `shape.md`? Update the Fit Check.
-- Changed `slices.md`? Update the affected `S#-plan.md` files.
-- Changed an `S#-plan.md`? Update the slice summary in `slices.md` if scope changed.
+- Breadboard diagram changed: update affordance tables first, then re-render Mermaid.
+- Requirements in `shape.md` changed: update the Fit Check and `slices.md` when needed.
+- Shape parts changed: update the Fit Check.
+- `slices.md` changed: update affected `S#-plan.md` files.
+- `S#-plan.md` changed: update the slice summary in `slices.md` if scope changed.
 
-The hook only fires on documents that carry `shaping: true` in the first five lines of frontmatter. The skills write this automatically - `frame.md`, `shape.md`, `slices.md`, and `S#-plan.md` all get the flag. To opt a custom document in, add `shaping: true` to its YAML frontmatter.
+## Sources
 
-## Problem
+- [Shape Up](https://basecamp.com/shapeup)
+- [rjs/shaping-skills](https://github.com/rjs/shaping-skills)
+- [obra/superpowers](https://github.com/obra/superpowers)
+- [basecamp/house-skills](https://github.com/basecamp/house-skills)
 
-During longer development phases, AI starts to get sloppy, derails, and ignores `YAGNI` written in system prompts or `CLAUDE.md` files. This happens in Scrum too, where scope gets cut or features get delayed once developers realize the problem is bigger than the estimated story points or product owners want to add a feature forgotten in the initial concept of an epic.
-
-AI needs clearly written concepts to produce desired outcomes and stay on track.
-
-## Solution
-
-By following Shape Up, you frame the problem and shape the concept before building. You define dos and won't-dos, identify rabbit holes, and set your appetite as a signal of how much you are willing to invest. You sketch the solution in clear written form. You bet on a concept to make an informed, weighted decision. Only after all of that do you kick off and break the work into scopes.
-
-This project assists you in following this process but keeps it loose enough to jump over phases where they don't apply.
-
-## Phases
-
-Work moves through five phases before any agent touches code.
-
-**Candidate.** An idea, a spark, a hunch. Something like "improve the dashboard" or "users are churning." Vague and unexamined. Worth investigating, not yet worth building.
-
-**Framing.** The candidate gets examined against reality. What is the actual problem? Who has it? What is the job to be done? The output is a clear problem statement and outcome. The frame is a checkpoint: is this worth shaping?
-
-**Shaping.** Given a clear frame, the solution gets defined. What are we actually going to build? How does it work? What are the risks and rabbit holes? Shaping produces a concept paper: a solution sketch, explicit dos and won't-dos, and all open questions resolved. The concept paper is written after shaping is done and serves as the kickoff reference.
-
-Framing and shaping both require true domain knowledge throughout. Framing without it produces the wrong problem. Shaping without it produces a solution that cannot survive contact with reality. The two phases are iterative: shaping regularly surfaces questions that send the work back into framing. The concept paper only gets written when both the problem and the solution are clear enough to build against.
-
-**Betting.** A deliberate, weighted decision to commit one cycle of build time to a shaped concept. The bias is toward no. A fuzzy shape produces a bad bet. A no-bet returns the concept to framing or shaping, not a backlog.
-
-**Building.** Begins only after betting is complete. The concept paper is the kickoff document. Work is broken into vertical scopes — end-to-end slices that can be built and demoed independently. Scope breakdown happens one scope at a time, at the start of that scope, not all upfront.
-
-## The Three Constraints
-
-Every shaped concept is anchored to three constraints.
-
-**Problem.** Why does this work matter? Framing surfaces this. Without a clear problem, shaping produces the wrong solution.
-
-**Appetite.** How much time is the team willing to spend? Appetite is a business decision set during framing. It does not move. Scope adjusts to fit.
-
-**Scope.** What is explicitly in and explicitly out? Expressed as dos and won't-dos. Won't-dos are as important as dos.
-
----
-
-## Sources and prior art
-
-- [Shape Up](https://basecamp.com/shapeup) - Ryan Singer's original book. The methodology this plugin encodes.
-- [rjs/shaping-skills](https://github.com/rjs/shaping-skills) - Ryan Singer's own Claude Code skills for shaping. The breadboarding vocabulary (P#/U#/N#/S#), Wires Out vs Returns To, the Blocking Test, binary fit checks, and the ripple-check hook all originate here.
-- [obra/superpowers](https://github.com/obra/superpowers) - Jesse Vincent's Claude Code plugin. The plugin architecture, skill structure, hook patterns, and test infrastructure are modelled on superpowers.
+[MIT License](LICENSE)

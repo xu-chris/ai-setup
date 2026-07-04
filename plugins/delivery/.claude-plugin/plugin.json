@@ -1,0 +1,22 @@
+{
+  "name": "delivery",
+  "version": "0.1.0",
+  "description": "Delivery workflow skills — fully implement Basecamp cards, review code expertly, use isolated worktrees, make small verified commits, update cards, and hand off PRs.",
+  "author": {
+    "name": "Chris Xu"
+  },
+  "homepage": "https://github.com/xu-chris/ai-setup",
+  "repository": "https://github.com/xu-chris/ai-setup",
+  "license": "MIT",
+  "skills": [
+    "./skills/programming-a-card/",
+    "./skills/code-review-expert/"
+  ],
+  "keywords": [
+    "delivery",
+    "basecamp",
+    "cards",
+    "implementation",
+    "pull-requests"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "tools",
+  "version": "0.1.0",
+  "description": "Tool operation skills — Firecrawl web search, scraping, research, and content extraction.",
+  "author": {
+    "name": "Chris Xu"
+  },
+  "homepage": "https://github.com/xu-chris/ai-setup",
+  "repository": "https://github.com/xu-chris/ai-setup",
+  "license": "MIT",
+  "skills": [
+    "./skills/firecrawl/"
+  ],
+  "keywords": [
+    "tools",
+    "firecrawl",
+    "web-search",
+    "scraping",
+    "research"
+  ]
+}
