@@ -41,32 +41,69 @@ Use `shape-up` for dedicated project setup. Use `elixir` for Elixir/Phoenix/Ash/
 | `tools` | Tool operation setup | Firecrawl web search, scraping, research, content extraction |
 | `delivery` | Card delivery setup | Basecamp card implementation, expert code review, worktree isolation, verified commits, PR handoff |
 
-## Skills
+## Skills By Plugin
 
-| Skill | Plugin | Description |
-| --- | --- | --- |
-| [frame](skills/frame) | shape-up | Turn a raw idea, request, or complaint into a clear problem frame |
-| [shape](skills/shape) | shape-up | Define a solution at Shape Up abstraction: rough, solved, bounded |
-| [bet](skills/bet) | shape-up | Decide whether shaped work deserves protected build time |
-| [kickoff](skills/kickoff) | shape-up | Move a bet into build by mapping vertical scopes |
-| [scope](skills/scope) | shape-up | Break one scope into concrete tasks at the start of that scope |
-| [breadboarding](skills/breadboarding) | shape-up | Prototype the wiring: places, affordances, stores, flows |
-| [breadboard-reflection](skills/breadboard-reflection) | shape-up | Sync breadboards to implementation and inspect design smells |
-| [dag](skills/dag) | shape-up | Render scope or task dependency graphs |
-| [facilitating-strategy](skills/facilitating-strategy) | shape-up | Develop, sharpen, and pressure-test real strategy before shaping work |
-| [ux-design](skills/ux-design) | interface-design | Design UI behavior, copy, errors, empty states, and audits |
-| [frontend-craft](skills/frontend-craft) | frontend | Write and review semantic, accessible HTML and maintainable CSS |
-| [skill-crafting](skills/skill-crafting) | ai | Create, edit, and refine agent skills through co-development and eval loops |
-| [install-md](skills/install-md) | ai | Create installation docs optimized for autonomous agent execution |
-| [harden-github-actions](skills/harden-github-actions) | security | Resolve zizmor warnings and harden GitHub Actions workflows |
-| [elixir-architect](skills/elixir-architect) | elixir | Design Elixir/Phoenix/Ash architecture and handoff documentation |
-| [writing-ash-code](skills/writing-ash-code) | elixir | Write production-grade Ash resources, actions, policies, forms, and jobs |
-| [beam-security-hardening](skills/beam-security-hardening) | elixir | Harden BEAM/Phoenix code, deployments, LiveView, and Zero Trust decisions |
-| [codebase-cleanup](skills/codebase-cleanup) | elixir | Run focused BEAM cleanup and remediation passes |
-| [updating-dependencies](skills/updating-dependencies) | elixir | Update Elixir/Phoenix dependencies safely |
-| [firecrawl](skills/firecrawl) | tools | Use Firecrawl CLI for web search, scraping, research, and extraction |
-| [programming-a-card](skills/programming-a-card) | delivery | Take a Basecamp card from ready to implemented with evidence, review, PR, and card updates |
-| [code-review-expert](skills/code-review-expert) | delivery | Review diffs with senior-engineer rigor for bugs, architecture, security, tests, and removal candidates |
+### shape-up
+
+| Skill | Description |
+| --- | --- |
+| [facilitating-strategy](skills/facilitating-strategy) | Develop, sharpen, and pressure-test real strategy before shaping work |
+| [frame](skills/frame) | Turn a raw idea, request, or complaint into a clear problem frame |
+| [shape](skills/shape) | Define a solution at Shape Up abstraction: rough, solved, bounded |
+| [bet](skills/bet) | Decide whether shaped work deserves protected build time |
+| [kickoff](skills/kickoff) | Move a bet into build by mapping vertical scopes |
+| [scope](skills/scope) | Break one scope into concrete tasks at the start of that scope |
+| [breadboarding](skills/breadboarding) | Prototype the wiring: places, affordances, stores, flows |
+| [breadboard-reflection](skills/breadboard-reflection) | Sync breadboards to implementation and inspect design smells |
+| [dag](skills/dag) | Render scope or task dependency graphs |
+
+### interface-design
+
+| Skill | Description |
+| --- | --- |
+| [ux-design](skills/ux-design) | Design UI behavior, copy, errors, empty states, and audits |
+
+### frontend
+
+| Skill | Description |
+| --- | --- |
+| [frontend-craft](skills/frontend-craft) | Write and review semantic, accessible HTML and maintainable CSS |
+
+### ai
+
+| Skill | Description |
+| --- | --- |
+| [skill-crafting](skills/skill-crafting) | Create, edit, and refine agent skills through co-development and eval loops |
+| [install-md](skills/install-md) | Create installation docs optimized for autonomous agent execution |
+
+### security
+
+| Skill | Description |
+| --- | --- |
+| [harden-github-actions](skills/harden-github-actions) | Resolve zizmor warnings and harden GitHub Actions workflows |
+
+### elixir
+
+| Skill | Description |
+| --- | --- |
+| [elixir-architect](skills/elixir-architect) | Design Elixir/Phoenix/Ash architecture and handoff documentation |
+| [writing-ash-code](skills/writing-ash-code) | Write production-grade Ash resources, actions, policies, forms, and jobs |
+| [beam-security-hardening](skills/beam-security-hardening) | Harden BEAM/Phoenix code, deployments, LiveView, and Zero Trust decisions |
+| [codebase-cleanup](skills/codebase-cleanup) | Run focused BEAM cleanup and remediation passes |
+| [updating-dependencies](skills/updating-dependencies) | Update Elixir/Phoenix dependencies safely |
+
+### tools
+
+| Skill | Description |
+| --- | --- |
+| [firecrawl](skills/firecrawl) | Use Firecrawl CLI for web search, scraping, research, and extraction |
+
+### delivery
+
+| Skill | Description |
+| --- | --- |
+| [programming-a-card](skills/programming-a-card) | Take a Basecamp card from ready to implemented with evidence, review, PR, and card updates |
+| [code-review-expert](skills/code-review-expert) | Review diffs with senior-engineer rigor for bugs, architecture, security, tests, and removal candidates |
 
 ## Commands
 
