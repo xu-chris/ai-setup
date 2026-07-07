@@ -1,6 +1,6 @@
 ---
 name: bet
-description: Use when a concept has reached Shape Go and needs a deliberate decision before building begins.
+description: Use when a concept has reached Shape Go and needs a deliberate decision before building begins — essential when several shaped concepts compete for the cycle or a real no-bet is on the table; optional in a one-to-one pipeline, where kickoff's Part 0 records the commitment instead.
 ---
 
 # Betting
@@ -10,6 +10,8 @@ Betting is the decision to commit build time to a shaped concept. It is a weight
 A bet has three properties. It has a payout - something meaningful is finished at the end of the cycle. It is a commitment - time is protected and the work gets uninterrupted attention. It has a capped downside - the maximum loss is one cycle, never an open-ended extension.
 
 In most companies, betting is one-to-one: one candidate is framed, shaped, and green-lit. Alignment is built progressively through framing and shaping - by the time the concept reaches Shape Go, the team already knows this is the thing. The betting step is the final stamp of approval, not a competition between pitches.
+
+When truly nothing competes, even the stamp can be recorded at kickoff (its Part 0 runs the compressed version of the five questions and writes the Bet section). Invoke this skill when there is a real choice between shaped concepts, or a real "not this cycle" to consider — the selection function and the no-bet discipline are what need the full table. What never gets skipped, in either path: weighing shape.md's `## New Problems This Creates` and re-confirming every recorded unverified assumption. The commitment — payout, protected time, capped downside — is recorded either way.
 
 **Before starting:** Read `docs/concepts/[name]/frame.md` and `docs/concepts/[name]/shape.md`. The status in `frame.md` must be `shape-go`. If shaping is incomplete, return to shaping. A fuzzy shape produces a bad bet.
 
@@ -71,7 +73,7 @@ A bet is a commitment to one thing for the duration of the cycle. If two shaped 
 
 **Goal:** Commit or decline - no middle ground.
 
-The decision is binary.
+The decision is binary — and it is the user's. You present the evidence from the five questions and a recommendation; they say bet or no bet. An agent-declared bet is not a commitment, it is a guess with a calendar.
 
 **Bet** - the concept moves to building. Set `status: bet`. Fill in the Bet section with the decision rationale, conditions that must hold, and the cycle assigned.
 

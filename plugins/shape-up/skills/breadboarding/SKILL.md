@@ -7,7 +7,13 @@ description: Use when a concept needs to be prototyped at the wiring level - to 
 
 Breadboarding is a lightweight prototyping technique for visualizing and verifying a concept at the wiring level - before any visual design or implementation begins. It surfaces every UI affordance, every code affordance, and the flows between them. The output is a wiring diagram that shows what exists, where it lives, and what it connects to.
 
-Use it whenever a concept needs to be made concrete enough to reason about - during shaping, during a design review, or at the start of a build cycle. When invoked from the shape skill, the Phase 2 elements define what must exist; breadboarding defines how those elements connect technically.
+Use it whenever a concept needs to be made concrete enough to reason about - during shaping, during a design review, or at the start of a build cycle.
+
+**Two entry modes:**
+- **From `shape-up:shape` (its Phase 5):** requirements, the chosen shape, and the fit check already exist in the session — do NOT rebuild them. Skip Steps 1–3 and start at Step 4, enumerating affordances for the chosen shape.
+- **Standalone:** run all steps.
+
+**In both modes the session's dialogue law carries over: you draft the wiring; the user makes the calls.** A wiring choice that embeds a trade-off — where a flow starts, what stays manual vs. automated, which place owns an affordance — is a design decision, not notation. Return each one to the session as a decision point instead of resolving it silently.
 
 **The breadboard is for humans. The tables are for the AI. Both are required outputs.**
 
@@ -273,7 +279,7 @@ Use chunking when the subsystem would otherwise make the main diagram unreadable
 
 ## Slicing
 
-After the breadboard is complete, group affordances into vertical implementation slices (S1–S9, max 9).
+After the breadboard is complete, group affordances into vertical implementation slices (SL1–SL9, max 9). The `SL#` prefix is deliberate: `S#` already means data stores in this notation and scopes in `slices.md` — three meanings on one prefix is how cross-references rot.
 
 Each slice must:
 - Have demo-able UI (a slice with no visible output is a horizontal layer, not a slice)
@@ -287,8 +293,8 @@ Assign each affordance to the slice where it is first needed. Add a Slices secti
 
 | Slice | Affordances | Demo statement |
 |-------|-------------|----------------|
-| S1    | U1, N1, S1  | [one sentence] |
-| S2    | U2, N2      | [one sentence] |
+| SL1   | U1, N1, S1  | [one sentence] |
+| SL2   | U2, N2      | [one sentence] |
 ```
 
 This grouping is the input kickoff uses to map scopes. The `slices.md` document is written by the kickoff skill; individual `S#-plan.md` files are written by the scope skill.
@@ -297,7 +303,9 @@ This grouping is the input kickoff uses to map scopes. The `slices.md` document 
 
 | If you see this | Do this |
 |---|---|
-| A shape drafted before the R-table is complete | Stop - requirements first |
+| Rebuilding the R-table or shapes when invoked from `shape-up:shape` | Steps 1–3 already happened in the session. Start at Step 4. |
+| A wiring trade-off resolved silently in the tables | That is a design decision. Return it to the session as a decision point. |
+| A shape drafted before the R-table is complete | Stop - requirements first (standalone mode) |
 | Wires Out references a number with no table row | Resolve the reference before generating |
 | The diagram is annotated with prose explanations | Move the explanation to the table's Description column |
 | A place has no affordances | Every place must have at least one |

@@ -165,7 +165,7 @@ Users are often non-technical and won't have set up the workspace — asking for
 
 ## Phase 5: Breadboard
 
-**Do:** Invoke `shape-up:breadboarding`. Wiring choices that embed a trade-off (where a flow starts, what stays manual vs. automated) → decision points.
+**Do:** Invoke `shape-up:breadboarding` — entered from here it starts at Step 4 (affordance enumeration); your R, chosen shape, and fit check carry over, do not let it rebuild them. Wiring choices that embed a trade-off (where a flow starts, what stays manual vs. automated) → decision points.
 
 **Gate:** Play-through gap-free. Breadboard written into shape.md.
 

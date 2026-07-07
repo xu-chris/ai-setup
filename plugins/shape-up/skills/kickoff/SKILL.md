@@ -13,7 +13,7 @@ The output is a separate slices document at `docs/concepts/[name]/slices.md`. Th
 
 **No code is written during kickoff. The output is a slices document, not a pull request.**
 
-**Before starting:** Read `docs/concepts/[name]/frame.md` and `docs/concepts/[name]/shape.md`. The status in `frame.md` must be `bet`. If shaping or betting is incomplete, do not proceed. A kickoff from fuzzy shaped work produces confused scopes.
+**Before starting:** Read `docs/concepts/[name]/frame.md` and `docs/concepts/[name]/shape.md`. shape.md must be at `shape-go` — a kickoff from fuzzy shaped work produces confused scopes. frame.md must carry a commitment: `status: bet`, or `shape-go` closed out through Part 0 below. If shaping is incomplete, do not proceed.
 
 ## The Iron Law
 
@@ -22,6 +22,30 @@ SCOPES ARE VERTICAL SLICES. TACKLE HIGHEST UNCERTAINTY FIRST.
 ```
 
 Violating the letter of this rule is violating the spirit of it. A scope organized by layer - all backend, all frontend - is not a vertical slice. A cycle that saves the hardest problem for last will not finish on time.
+
+## Part 0: Confirm the Commitment (when betting was not run)
+
+Betting is a decision, not a mandatory meeting. When several shaped concepts compete for the cycle — or the user wants a deliberate go/no-go — invoke `shape-up:bet` and return with `status: bet`. When nothing competes (the one-to-one pipeline: alignment was built progressively through framing and shaping), the selection already happened at the earlier checkpoints; record the commitment here instead of staging a table with one paper on it.
+
+```
+IF frame.md is shape-go AND the user confirms nothing competes for this cycle:
+  → run the compressed check, out loud, from the record:
+    1. What goes wrong if this is not built? (the frame's cost — still true?)
+    2. Is the appetite still right, given everything shaping surfaced?
+    3. Is the solution sound? Read shape.md's ## New Problems This Creates and
+       weigh every entry — especially Assumption (unverified) rows. The shape
+       wrote that section for this moment; each accepted risk is re-confirmed
+       deliberately, never carried forward by inertia.
+    4. Right time, right people for this cycle?
+    5. Is this the one thing?
+  → the bet is the user's call — a decision point, never yours
+  → on their yes: append the Bet section to frame.md (decision, conditions,
+    cycle dates), set status: bet, continue to Part 1
+  → on hesitation: the wobbling question names the gap — go back there,
+    or run shape-up:bet in full
+IF anything else shaped is waiting for the same slot
+  → invoke shape-up:bet; a real choice needs the real table
+```
 
 ## Part 1: Document Tour
 
@@ -37,6 +61,8 @@ While walking through, collect every ambiguity: gaps in the breadboard, elements
 IF ambiguities remain after the document tour → resolve them before proposing scopes
   Scopes defined over gaps produce work that stalls mid-cycle
 ```
+
+Problem-material can surface even here — a fresh support case in the user's aside, a tour ambiguity that is really a frame gap, a code finding that contradicts the frame. Route it per the shape skill's frame-delta protocol: name it, quality-check it, decision point, record it in frame.md (in-scope or parked), and only then continue. Never absorb it silently into scopes; never drop it. A large delta — wrong problem, cost evaporated — suspends the kickoff exactly as it suspends shaping.
 
 ## Part 2: Investigate the Existing System
 
@@ -166,6 +192,8 @@ Then invoke `shape-up:dag` to generate the scope dependency graph. The DAG is wr
 
 | If you're thinking... | Do this |
 |---|---|
+| "Nothing competes, so betting just doesn't happen" | Run Part 0 — the commitment still gets recorded and the New Problems section still gets weighed |
+| "The New Problems section is shaping's business" | It was written for this gate. Read it aloud before committing |
 | "I'll propose scopes before reading the full concept" | STOP - document tour comes first |
 | "Scopes organized by layer are easier to track" | STOP - layers are not vertical slices |
 | "We'll start with the easiest scope to build momentum" | STOP - highest uncertainty goes first |
@@ -190,6 +218,7 @@ Then invoke `shape-up:dag` to generate the scope dependency graph. The DAG is wr
 
 | Phase | Key Activity | Gate |
 |---|---|---|
+| 0. Commitment | If no bet ran: compressed five questions from the record; New Problems weighed | **User** declares the bet; `status: bet` recorded (or shape-up:bet invoked) |
 | 1. Document Tour | Walk through concept with full team, collect ambiguities | All ambiguities resolved |
 | 2. Investigate System | Read relevant code, find reusable patterns | Can name reusable components and new territory |
 | 3. Map Scopes | Vertical slices, max 9, domain language | Team confirms scope list before writing |
