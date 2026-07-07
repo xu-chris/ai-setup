@@ -50,11 +50,11 @@ Use `shape-up` for dedicated project setup. Use `elixir` for Elixir/Phoenix/Ash/
 | [facilitating-strategy](skills/facilitating-strategy) | Develop, sharpen, and pressure-test real strategy before shaping work |
 | [frame](skills/frame) | Turn a raw idea, request, or complaint into a clear problem frame |
 | [shape](skills/shape) | Define a solution at Shape Up abstraction: rough, solved, bounded |
+| [breadboarding](skills/breadboarding) | Prototype the wiring: places, affordances, stores, flows |
+| [breadboard-reflection](skills/breadboard-reflection) | Sync breadboards to implementation and inspect design smells |
 | [bet](skills/bet) | Decide whether shaped work deserves protected build time |
 | [kickoff](skills/kickoff) | Move a bet into build by mapping vertical scopes |
 | [scope](skills/scope) | Break one scope into concrete tasks at the start of that scope |
-| [breadboarding](skills/breadboarding) | Prototype the wiring: places, affordances, stores, flows |
-| [breadboard-reflection](skills/breadboard-reflection) | Sync breadboards to implementation and inspect design smells |
 | [dag](skills/dag) | Render scope or task dependency graphs |
 
 ### interface-design
