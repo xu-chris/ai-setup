@@ -57,6 +57,8 @@ Appetite was set during framing. Does it still feel accurate given what shaping 
 **3. Is the solution sound?**
 Does the shaped solution actually address the problem? Are the won't-dos acceptable given the problem's real cost? Are the rabbit hole patches convincing? Can you point to specific decisions in the concept that reflect knowledge of how the existing system works?
 
+And: what new problems does this solution create, and who inherits them? `shape.md`'s `## New Problems This Creates` section should answer this — weigh whether the trade is acceptable. If the section is missing, the shape skipped the question: return to shaping.
+
 **4. Is this the right time, with the right people?**
 Consider what has just shipped, what technical state the codebase is in, and what momentum exists. Consider who is available - will the people needed to execute this concept have the time and focus the cycle requires?
 

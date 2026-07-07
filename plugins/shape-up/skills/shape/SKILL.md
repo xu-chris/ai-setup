@@ -1,37 +1,75 @@
 ---
 name: shape
-description: Use when a concept document has reached Frame Go and the problem is clear enough to start defining a solution.
+description: Use when a concept document has reached Frame Go and the problem is clear enough to start defining a solution with the user. Also when a solution is being drafted without the user's decisions, when only one option is on the table, or when a shape is about to be declared done without asking whether it solves the framed problem.
 ---
 
 # Shaping
 
-Shaping is getting to the "we've got it" moment - a shared understanding of what to build that is rough enough to leave implementation judgment to builders, solved enough that nothing critical is hand-waved, and bounded by the appetite set during framing.
+Shaping is getting to the "we've got it" moment — a shared understanding of what to build that is rough enough to leave implementation judgment to builders, solved enough that nothing critical is hand-waved, and bounded by the appetite set during framing.
 
-Shaping is not a document exercise. The document that comes out is packaging: a way to bring people who weren't in the sessions to the same understanding. The real work is the live thinking, sketching, and back-and-forth that reaches the a-ha moment. Shaping cannot be done alone or by filling in a template.
+The "we" is literal. Shaping is collaborative creative work: two people at a whiteboard moving fast, speaking frankly, jumping between promising positions. In this session, the user is your shaping partner — they hold the domain truth and the business judgment; you hold the codebase and the rigor. A shape produced without their decisions in it is not a shape; it is your guess wearing a shape's clothes.
 
-**Shaping requires senior technical people who know the codebase. Shaping without technical depth is the #1 failure mode. Projects shaped without it churn in build because of unanswered questions that were never surfaced.**
+The document that comes out is packaging: a way to bring people who weren't in the session to the same understanding. The real work is the live back-and-forth that reaches the a-ha moment. Shaping cannot be done alone — not by the user alone, and not by you alone.
 
-**Before starting:** Read `docs/concepts/[name]/frame.md`. The status must be `frame-go`. If the problem section is still vague, return to framing - shaping without a clear frame produces the wrong solution.
+**Before starting:** Read `docs/concepts/[name]/frame.md`. The status must be `frame-go`. If the problem section is still vague, return to framing — shaping without a clear frame produces the wrong solution.
 
-## The Iron Law
+## The Iron Laws
 
 ```
-APPETITE DOES NOT MOVE. SCOPE ADJUSTS TO FIT IT.
+1. APPETITE DOES NOT MOVE. SCOPE ADJUSTS TO FIT IT.
+2. SHAPING IS A DIALOGUE. THE USER MAKES THE CALLS.
 ```
 
-Violating the letter of this rule is violating the spirit of it. If the solution doesn't fit the appetite, scope must be cut or the problem must be reframed - the appetite does not flex.
+**Appetite does not move.** If the solution doesn't fit the appetite, scope must be cut or the problem reframed — the appetite does not flex.
+
+**The user makes the calls.** You draft, explore the codebase, generate options, hunt risks — but you decide nothing that shapes the outcome. Producing requirements, shapes, a fit check, a winner, and shape.md in one turn is a monologue, and a monologue violates this law no matter how good its content is. "The user was busy" does not suspend the law; it pauses the session.
+
+Violating the letter of either law violates the spirit of it.
+
+## Division of Labor
+
+- **The user owns:** domain truth, business priority, and every trade-off call — what to cut, what to suck at, what is out of bounds, which shape advances, when it is shaped enough.
+- **You own:** codebase truth (you are the senior technical person in the room — earn it by actually reading the code, not reasoning from outside), option generation, risk hunting, and framework rigor (notation, gates, abstraction level).
+
+Neither overrides the other in the other's territory. If the user asserts something about the code, check it. If you have an opinion about a trade-off, give it as a recommendation — then let them decide.
+
+## The Session Rhythm
+
+Work in **rounds**. Each round: do your homework (read code, draft tables, sketch options) → bring findings back in digestible form → present **one decision point** → wait → record the user's call → next round. Never batch the whole shape into one message. A long session of small decisions is the method, not an inefficiency.
+
+End every session with the takeaways and the unsolved-questions list; open the next by replaying them. Unsolved questions carried silently between sessions are the ones that resurface in week three.
+
+**Decision points.** At every fork, present options with trade-offs and a recommendation, then stop and wait:
+
+```
+DECISION POINT: [the fork]
+Stake: [what gets worse if we choose wrong]
+
+Option A: [approach] — Pro: … Con: …
+Option B: [approach] — Pro: … Con: …
+
+Recommendation: [A/B] because [reasoning]. Your call.
+```
+
+Use the AskUserQuestion tool when available; the text form otherwise. Record the outcome: `Decision: [X] — user`. If a round genuinely has no fork, say so: "Decision points: none this round."
+
+**Delegation rule.** "You decide" delegates only *secondary* choices (notation details, ordering, which spike to run first) — record them as `Decision: [X] — delegated`. **Load-bearing calls cannot be delegated:** which shape advances, any cut or patch that removes capability, the won't-dos, and Shape Go itself. For those, give your recommendation and get an explicit confirmation. If the user is too busy to make load-bearing calls, the session pauses — it does not proceed on your judgment.
+
+**The two standing questions.** At every decision point, ask them out loud and answer them together:
+
+1. **"Does this still solve the framed problem — and does the frame still say everything we now know?"** The frame is the acceptance test, so the check runs both ways: the shape against the frame, and the frame against everything learned since. "Still fits the frame" is worthless if the frame is stale — if a problem-fact surfaced that frame.md doesn't contain, run the frame-delta protocol before wiring on. Watch for language drift: if the shape says "payment status" where the frame says "missed payments," the solution is drifting from the problem.
+2. **"What new problems would this shape create, and who inherits them?"** Every solution is the source of the next problem. Displace consciously or not at all — name the residue and its inheritor. These answers accumulate in shape.md under `## New Problems This Creates` and feed the betting decision.
 
 ## The Abstraction Discipline
 
-Shaped work lives at the fat-marker sketch level. This is the hardest discipline to hold.
+Shaped work lives at the fat-marker sketch level.
 
-**Keep:** Named building blocks, macro-level connections, flow topology, the wiring of how things work together.
+**Keep:** named building blocks, macro-level connections, flow topology — the wiring of how things work together.
+**Reject:** visual designs, exact copy, database schemas, component libraries, API specs, implementation detail of any kind.
 
-**Reject:** Visual designs, exact copy, database schemas, component libraries, API specs, implementation detail of any kind.
+A shaped solution is the blueprint of a house: where the walls go, where the pipes run. Not the tile, not the paint. Those decisions happen during building, by the people doing the work.
 
-A shaped solution is the blueprint of a house: where the walls go, where the sink goes, where the pipes run. Not the tile, not the paint, not the fixtures. Those decisions happen during building, by the people doing the work.
-
-This discipline governs shape part descriptions. The breadboarding skill defines its own abstraction standard for affordances.
+This axis has a name: **latitude** — how much is spelled out vs. left open for the builders. Both extremes fail: undershaped work (wish-list parts, "the team will figure it out") stalls inside the time box; overshaped work (the "beautiful monster" spec) blows the box and gets stuck with the first idea. When you suspect drift toward either extreme, check the symptom tables in `references/calibration.md`.
 
 ```
 WHEN describing any shape part or flow step:
@@ -41,193 +79,136 @@ WHEN describing any shape part or flow step:
   IF yes → leave it out of the shape
 ```
 
-## The Iterative Boundary
+## One Understanding, Two Layers
 
-Shaping regularly surfaces questions that require going back to the frame. This is expected - the understanding of both problem and solution deepens together. The first model is always wrong.
+The frame and the shape are not phases with a border — they are two layers of one understanding that deepen together. The frame precedes the shape *logically* (every shape decision must be justified by the current frame), not *temporally*: shaping is the sharpest probe the frame ever gets, and its concrete questions routinely surface problem-facts that no amount of framing would have found. Frame material arriving mid-shaping is the process working at its best. Harvest it — never ignore it, never treat it as an interruption.
 
-```
-WHEN a question surfaces during shaping:
-  IF it concerns the solution (what should exist, how it connects, what the flow looks like)
-    → answer it here, stay in shaping
-  IF it concerns the problem (is this the right failure, does this cost what we thought, who actually has this)
-    → STOP, invoke frame skill, resolve the framing question
-    → resume shaping after frame-go is confirmed
-```
+**The invariant:** at every decision point, the shape is justified by the current frame, *and* the frame contains everything learned so far. Two documents, one truth. Adjusting the shape to a new fact while frame.md still tells the old story hands the betting table a stale acceptance test.
 
-Shaping that continues over an unresolved framing question produces a shaped solution to the wrong problem.
+### The routing rule
 
-When domain questions keep surfacing repeatedly, the right fix is not more round-trips between framing and shaping - it is bringing the domain expert into the shaping session so questions can be answered on the spot and the design can be revised in real time.
+Users do not speak in phases. Any remark — an aside, an SME anecdote, a complaint — may carry problem-material (who is affected, cost, workaround, why it persists, outcome), solution-material (mechanism, wiring, scope), both, or neither. Sort what each message carries and say so in one sentence: "That's frame material — it changes the problem from surfacing to solving; here's what it does to the shape." Routing is not a mode switch. It costs one sentence.
 
-## Phase 1: Read the Frame
-
-**Goal:** Absorb the problem, appetite, and language before any solution thinking begins.
-
-Pay close attention to the language in the frame. The words used there must carry through shaping. If the frame says "missed payments," shape parts and the breadboard should say "missed payments" - not "payment status" or "invoice errors." Language drift between frame and shape signals the solution is drifting from the problem.
-
-**Gate:** Appetite is fixed in mind. Frame language is noted. No shaping operations have begun.
-
-## Shaping Operations
-
-After reading the frame, the following operations can be performed in any order. They inform each other - R and S are refined together, and the fit check drives which shape advances.
-
-### R - Requirements
-
-Requirements define the problem space.
-
-- Number them R0, R1, R2...
-- Track status per requirement: Core goal / Must-have / Undecided / Nice-to-have / Out
-- R states what's needed, not how to satisfy it. Satisfaction is shown in a fit check.
-- Never more than 9 top-level requirements. Group related ones as R3.1, R3.2 if needed.
+### The frame-delta protocol
 
 ```
-| ID | Requirement | Status |
-|----|-------------|--------|
-| R0 | [statement] | Core goal |
-| R1 | [statement] | Must-have |
+WHEN problem-material surfaces mid-shaping:
+  1. Name it as a frame delta, out loud.
+  2. Quality-check it inline — the frame skill's verdict loop travels with the
+     material ("two owners churned last quarter" — where does that live?).
+     The frame skill is a quality bar, not a location.
+  3. Reframe decision point: proposed frame change + what it does to the
+     requirements and the shape. Reframes are load-bearing — never
+     agent-authored, never delegated.
+  4. Write the delta into frame.md (problem statement, affected topics,
+     Evidence). Status stays frame-go when the user re-confirms in-session.
+  5. Propagate: re-derive affected Rs, re-run the fit check, re-check the
+     breadboard — 🟡-marked. Say out loud what dies and what is born.
+     If the delta collides with the appetite, negotiate it openly:
+     "I'm not sure we have time for both — if we could do only one thing,
+     which?" Test provenance before cutting: "Did you tell me about X
+     because it matters, or because I asked for more?"
+  6. Continue. Same room, same breath.
 ```
 
-Always show the full requirements table - never summarize or abbreviate.
+**Escalation ladder — magnitude decides ceremony, not category:**
+- **Small** (new fact fits the existing problem statement): inline delta, one confirmation.
+- **Medium** (the problem statement itself changes — "surfacing" becomes "solving"): still inline, but explicit reframe decision point, frame.md revision, full propagation.
+- **Large** (wrong problem; the cost evaporates; wrong segment): suspend shaping. frame.md drops to `status: candidate`; run the frame skill properly. This is the only case that leaves the room.
 
-When re-rendering the table after changes, mark changed cells with 🟡.
+"Park it for a future pitch" is a valid *outcome* of the reframe decision point — never a substitute for running it. A parked frame-fact is still written into frame.md (Evidence, or as context under New Problems), so the betting table sees it.
 
-### S - Shapes
+When domain questions keep surfacing that neither of you can answer, name the person who can and pause for research rather than guessing — the same exit framing uses. Better: bring that person into the session so answers land on the spot.
 
-Shapes are solution options. Letters A, B, C... are mutually exclusive - you pick one.
+## Phase 1: Read the Frame Together
 
-Each shape gets a short descriptive title: `A: [title]`. Good titles capture the essence of the approach in a few words.
+**Goal:** Shared grounding before any solution thinking.
 
-Parts within a shape use the shape's letter plus a number: A1, A1.1, A1.2... Start flat; add hierarchy only when grouping aids understanding.
+Read frame.md, then play your reading back to the user in two or three sentences: the problem, the appetite, the domain words that must carry through. Ask them to confirm or correct it. The frame's language is binding — shape parts and breadboard use the frame's words.
 
-Shape parts describe mechanisms - what to BUILD or CHANGE. They are not intentions or constraints.
+**Gate:** User has confirmed your reading. Appetite fixed. Language noted. No shaping operations begun.
 
-Mark flagged unknowns with ⚠️ in a Flag column: the mechanism is described at a high level but HOW is not yet known.
+## Phase 2: Requirements
 
-```
-| Part | Mechanism | Flag |
-|------|-----------|:----:|
-| A1   | [mechanism] | |
-| A2   | [mechanism] | ⚠️ |
-```
+**Goal:** Agree on what the solution must do before discussing how.
 
-**CURRENT** is a reserved shape name for the existing system baseline. Use it in fit checks as the starting point.
+Draft R0, R1, R2… from the frame (notation: `references/notation.md`). Propose a status for each — Core goal / Must-have / Undecided / Nice-to-have / Out — but **the statuses are the user's call**: they are miniature scope decisions. Walk through them as one decision point (or a few, if contested). Requirements state what's needed, not how.
 
-Always show full shape tables - never summarize or abbreviate.
+Test each requirement's provenance: "Did this come from the problem, or from me asking for more?" Requirements elicited by over-asking are cut candidates — the SME who mentioned class utilization "only because you said you needed more" was describing filler, not need. The sharpest probe: "If we could do only one thing, which?"
 
-When re-rendering after changes, mark changed cells with 🟡.
+**Gate:** User has confirmed every requirement status. Core goal is singular and matches the frame.
 
-### Fit Check
+## Phase 3: Explore Shapes
 
-The fit check is the decision matrix comparing shapes against requirements. Requirements are rows; shapes are columns.
+**Goal:** Genuinely different options on the table; the user rejects and picks.
 
-```
-| ID | Requirement | Status | CURRENT | A | B |
-|----|-------------|--------|---------|---|---|
-| R0 | [statement] | Core goal | ❌ | ✅ | ✅ |
-| R1 | [statement] | Must-have | ✅ | ✅ | ❌ |
-```
+Do your homework first: read the relevant code, understand what exists (CURRENT is the baseline shape). Then draft **at least two genuinely different shapes** — different trade-offs, not variations of one idea. One of them must be the **cheapest shape that passes the core goal**: the hot dog, not the ten-course dinner. "Good" is relative to appetite; making the user argue past the cheap shape is how they discover what is actually sufficient.
 
-Rules:
-- Fit check is binary only: ✅ (passes) or ❌ (fails). No other values.
-- A flagged unknown (⚠️) on any part makes the fit check ❌ for requirements that part addresses. You cannot claim what you don't know.
-- Shape columns contain only ✅ or ❌ - explanations go in a Notes section below the table.
-- Always show full requirement text. Never abbreviate.
+Present the shapes with the fit check (requirements × shapes, binary ✅/❌ — see `references/notation.md`), flag unknowns with ⚠️, and give your recommendation. Then the decision point: **the user rejects and picks.** People need to reject something to choose something — a single shape offers nothing to reject, which is why one shape is never enough.
 
-When re-rendering after changes, mark changed cells with 🟡.
+**Gate:** ≥2 shapes plus CURRENT were on the table; the user picked the advancing shape; the pick is recorded.
 
-If a shape passes all checks but still feels wrong, there is a missing requirement. Articulate the implicit constraint as a new R, then re-run the fit check.
+## Phase 4: Spike the Unknowns
 
-### Spikes
+**Goal:** No ⚠️ survives into the chosen shape.
 
-A spike investigates a flagged unknown (⚠️) and returns with concrete information about how to build the mechanism.
+Spikes are your homework: investigate each flagged unknown in the actual code and return with mechanics, not opinions (structure in `references/notation.md`). Report findings back; if a finding changes the shape's cost or viability, that is a decision point — the user may re-pick.
 
-Write spikes as sub-sections in `shape.md` (not separate files).
+**Gate:** All flags on the chosen shape resolved; fit check re-run; user informed of anything that moved.
 
-Structure:
-- **Context** - why we're investigating
-- **Questions** - specific questions about mechanics, not effort
-- **Findings** - what was learned
+## Phase 5: Breadboard
 
-Good spike questions ask about mechanics: "Where is the X logic?", "What changes are needed to achieve Y?", "How do we perform Z?"
+**Goal:** Wire the chosen shape end to end.
 
-Avoid: effort estimates, vague questions, yes/no questions that don't reveal mechanics.
+Invoke `shape-up:breadboarding`. Wiring choices that embed a trade-off (which place a flow starts from, what a user must do manually vs. what the system does) come back as decision points — they are design decisions, not notation.
 
-A spike is complete when you can describe the concrete steps needed. After a spike resolves a ⚠️, update the part's mechanism description and re-run the fit check.
+**Gate:** Play-through complete with no gaps. Breadboard written into shape.md.
 
-### Breadboard
+## Phase 6: Find the Rabbit Holes
 
-Invoke `shape-up:breadboarding` when the winning shape is clear enough to wire. Breadboard output is written into `shape.md`.
+**Goal:** Surface what could blow up the cycle, and patch every one — together.
 
-Do not proceed to Phase 4 until breadboarding is complete with no gaps in the play-through.
+Hunt: walk a use case in slow motion; ask what touches code we don't fully understand, which edge cases could force a bigger build, where this brushes existing complexity. For each rabbit hole, propose a patch — a specific constraint that prevents derailment. **Every patch that cuts capability or dictates a compromise is a load-bearing decision point** — the To-Do-Groups "completed items stay as they are" patch was a strategic product call, and so are yours.
 
-### Detailing a Shape
-
-When expanding a selected shape into affordances, use "Detail A" notation - not a new letter. Shape letters (A, B, C) are mutually exclusive alternatives. Detailing is a breakdown of the selected shape, not a sibling option.
+**Gate:** Every rabbit hole has a user-confirmed patch. No open rabbit holes.
 
 ```
-A, B, C = alternatives (pick one)
-Detail A = expansion of A (not a choice)
-```
-
-## Phase 4: Find the Rabbit Holes
-
-**Goal:** Surface what could unexpectedly expand scope, and patch every one before moving on.
-
-Rabbit holes are things that seem small but could blow up a build cycle from the inside. Any rabbit hole not patched during shaping is a time bomb - it will surface in week three of a six-week cycle when there is no room to absorb it.
-
-For each rabbit hole:
-- What parts of this solution touch things we do not fully understand?
-- What edge cases could force a much bigger implementation than expected?
-- Where does this solution brush up against existing complexity?
-
-Each rabbit hole entry states the risk and its patch - a specific constraint that prevents it from derailing the build.
-
-**Gate:** Every identified rabbit hole has a specific patch. No open rabbit holes.
-
-```
-IF a rabbit hole has no patch:
-  → either redesign the solution to avoid it
-  → or reframe the problem to take it out of scope
+IF a rabbit hole has no acceptable patch:
+  → redesign the shape, or return to framing to take it out of scope
   → do not proceed with an open rabbit hole
 ```
 
-## Phase 5: Define Dos and Won't-Dos
+## Phase 7: Dos and Won't-Dos
 
-**Goal:** Make every reasonable scope assumption explicit.
+**Goal:** Every reasonable scope assumption made explicit — by the user.
 
-Won't-dos are intentional exclusions that protect the appetite, each with a rationale. Dos confirm what is explicitly in scope.
+Propose the won't-dos (what could someone reasonably assume is included that we are not building?) with a rationale each. The user confirms every one — won't-dos are promises about what the business will not get, and only the user can make them. Restate decisions from framing; they do not carry over automatically.
 
-Go through the shapes and breadboard and ask: what could someone reasonably assume is included that we are not building? Make those assumptions explicit as won't-dos.
+**Gate:** Won't-Dos list produced and user-confirmed. Nothing left to inference.
 
-Do not declare Shape Go until you have produced an explicit Won't-Dos list. Decisions made in framing do not carry over automatically - restate them here. A reader who was not in the framing conversation must be able to understand what is excluded and why.
+## Phase 8: Three Properties and Shape Go
 
-**Gate:** Every reasonable scope assumption is named explicitly - nothing left to inference.
+**Goal:** Verify readiness — then the user, not you, declares Shape Go.
 
-## Phase 6: Three Properties Check
+State the evidence for each property (intentions don't count):
+- **Rough:** parts are named mechanisms; no schema, no component names, no exact copy.
+- **Solved:** all parts connected in the breadboard; no open ⚠️; open questions resolved and named.
+- **Bounded:** fits the appetite; won't-dos explicit; every rabbit hole patched.
 
-**Goal:** Verify the shaped solution is ready before writing to the document.
+Then ask the two standing questions one final time, out loud. Then hand over the pen:
 
-Apply these throughout shaping, not only at the end - ongoing discipline catches more than a final check.
+> "Here is the shape and the evidence. Do you call this Shape Go?"
 
-**Rough:** Is every shape part described at high abstraction? Is there room for the builder to make implementation decisions? If too detailed, elevate the abstraction.
-
-**Solved:** Are all shape parts identified and connected? Is the user flow clear end to end? Are there any open ⚠️ flags? Unresolved questions in shaping become blockers in building - work them out now.
-
-**Bounded:** Does the solution fit the appetite? Are the won't-dos explicit? Does every rabbit hole have a patch?
-
-**Gate:** All three properties pass. For each property, state the evidence - not the intention.
-
-- "Rough: ✓" is not evidence. "Rough: parts described as named mechanisms, no database schema, no component names, no exact copy" is evidence.
-- "Solved: ✓" is not evidence. "Solved: all parts connected in breadboard, no open ⚠️ flags, open question about X resolved as Y" is evidence.
-- "Bounded: ✓" is not evidence. "Bounded: Won't-Dos list produced, crew/cast excluded, file upload excluded, appetite fits build estimate" is evidence.
+**Shape Go means:** "We can give this to someone to build and they will know what to do. No material unknowns from a technical or interaction standpoint." It is the user's sentence. If they hesitate, the hesitation points at the weak phase — go back to it.
 
 ```
-IF any property fails → keep shaping. Do not write a shape-go that is not actually shaped.
+IF any property lacks evidence → keep shaping. Do not ask for Shape Go on hope.
 IF the check passes in under a minute → you have not done it.
 ```
 
 ## Output
 
-When the three properties pass, write to `docs/concepts/[name]/shape.md` (create the folder if it does not exist). The file must begin with this frontmatter:
+When the user declares Shape Go, write `docs/concepts/[name]/shape.md`:
 
 ```
 ---
@@ -236,48 +217,66 @@ status: shape-go
 ---
 ```
 
-**Shape Go means:** "We can give this to someone to build and they will know what to do. No material unknowns from a technical or interaction standpoint."
+The document captures the a-ha moment in packaging form: requirements, shapes considered (including the rejected ones and why), fit check, spikes, breadboard, rabbit holes with patches, dos and won't-dos, and:
 
-The document captures the a-ha moment in packaging form. It should bring anyone who reads it to the same understanding reached in the shaping sessions - without them having been there.
+- **`## New Problems This Creates`** — the accumulated answers to standing question 2: each new problem, who inherits it, and why the trade is acceptable. The betting table reads this section.
+- **`## Decisions`** — the log of decision points and who made each call (`user` / `delegated`). This is the shape's provenance: proof it was shaped, not generated.
 
-`shape.md` is the ground truth for R, shapes, fit checks, spikes, and breadboard. Changes here ripple to `slices.md` and to any `S#-plan.md` files below it.
+`shape.md` is ground truth for R, shapes, fit checks, spikes, and breadboard. Changes here ripple to `slices.md` and any `S#-plan.md` files below it.
+
+Table notation, re-render rules, and spike structure: `references/notation.md`.
 
 ## Red Flags
 
 | If you're thinking... | Do this |
 |---|---|
-| "I'll shape this from notes without a technical person" | STOP - shaping without technical depth produces undershaped work |
-| "I'm continuing but there's a framing question I haven't resolved" | STOP - return to framing, resume after frame-go confirmed |
-| "The rabbit hole might not matter in practice" | STOP - every rabbit hole needs a patch |
-| "I'll add design details to make it clearer" | STOP - you've left fat-marker level |
-| "I'm using different words than the frame used" | Language drift - return to frame language |
+| "I'll draft the whole shape to save the user time" | STOP — that is a monologue. Work in rounds. |
+| "Only one shape came to mind" | Nothing to reject means no real choice. Draft the cheap shape and a different-trade-off shape. |
+| "It's obvious which shape wins" | Then confirming costs one message. Ask anyway. |
+| "The user said 'you decide'" | Secondary choices only. Load-bearing calls need their explicit confirmation. |
+| "The checks pass — I'll set shape-go" | Shape Go is the user's sentence. Ask for it. |
+| "I'm continuing but there's an unresolved framing question" | STOP — return to framing, resume after frame-go |
+| "The rabbit hole might not matter in practice" | Every rabbit hole needs a user-confirmed patch |
+| "I'll add design details to make it clearer" | You've left fat-marker level |
+| "I'm using different words than the frame" | Language drift — return to frame language |
 | "I'll mark this TBD and resolve it in building" | Unresolved questions in shaping become blockers in building |
-| "R and S say the same thing" | R states the need; S describes the mechanism. If they're identical, the shape part adds no information. |
-| "A shape part is a horizontal layer ('Data model', 'Schema')" | Co-locate data structures with the feature that needs them - shape parts should be vertical slices |
-| "Continuing with an open ⚠️ without a spike" | A flagged unknown cannot pass a fit check. Spike it or descope it. |
+| "I haven't opened the codebase yet" | You are the technical person in the room. Read the code before proposing shapes. |
+| "The team will figure that part out" | Undershaped — that unknown stalls the time box. Breadboard or spike it now (`references/calibration.md`). |
+| "A styled mock would sell this better" | The beautiful monster. Hardline drawings become sacred. Stay at fat-marker. |
+| "Nobody asked what this shape breaks" | Standing question 2 is due at every decision point |
+| "About to write shape.md without `## New Problems This Creates`" | The betting table reads that section. Answer standing question 2 before writing. |
+| "That's a different feature — back to the breadboard" | Route it first. Parking is a decision-point *outcome*, never a reflex. The fact still lands in frame.md. |
+| "The shape still fits the frame" — checked against a frame you know is stale | The invariant has two halves. Update the frame, then re-check. |
+| A new fact changed the shape but frame.md is untouched | Silent divergence — the betting table will read a stale acceptance test. Run the delta protocol. |
 
 ## Rationalization Table
 
 | Excuse | Reality |
 |---|---|
 | "The appetite can flex a little" | Appetite is fixed. Scope adjusts. Not the other way. |
-| "A non-technical shaper is fine" | The #1 failure mode. Projects churn because of unanswered technical questions. |
+| "Producing it all at once is more efficient" | Efficiency at producing the wrong shape is negative efficiency. The decisions are the shaping. |
+| "The user trusts me, so I can pick the shape" | Trust means they'll take your recommendation seriously — after you ask. |
+| "Presenting options will overwhelm them" | Two shapes with clear trade-offs is less overwhelming than one fait accompli. |
 | "This detail is necessary for clarity" | If the builder can make the decision, leave it out |
-| "The rabbit hole probably won't come up" | Rabbit holes always come up. Patch them now or pay for it in week three. |
+| "The rabbit hole probably won't come up" | Rabbit holes always come up. Patch them now or pay in week three. |
 | "We can figure out the framing question as we go" | Shaping over an unresolved framing question produces the wrong solution |
-| "The document IS the shaping" | The document is packaging. The shaping is the live sessions and the thinking. |
-| "The element count is over 7 but they're all necessary" | Never used to say this - now requirements drive shape parts, not element count |
+| "The document IS the shaping" | The document is packaging. The shaping is the decisions in the session. |
+| "We're late — I'll compress the final gate away" | Compress the prose, not the gate. The two standing questions and the evidence statement still happen — in one message if needed. |
+| "It was just an aside, not a requirement" | Asides are where frame deltas hide. Route every remark. |
+| "Updating frame.md mid-shaping is ceremony" | It's six lines. A stale acceptance test costs a betting cycle. |
+| "We're too close to done to reframe" | The payment-recovery nugget arrived late too. Late frame-facts are usually the valuable ones. |
 
 ## Quick Reference
 
 | Phase | Key Activity | Gate |
 |---|---|---|
-| 1. Read the Frame | Absorb appetite and language | Appetite fixed in mind, language noted |
-| 2. Define R | Requirements with status | Core goal, Must-have confirmed before fit check |
-| 3. Draft shapes | A/B/C with titles, parts, ⚠️ flags | Parts are mechanisms, not intentions |
-| 4. Fit Check | Binary ✅/❌, CURRENT baseline | No open ⚠️ in winning shape |
-| 5. Spike unknowns | Investigate ⚠️ parts | All flags resolved before Shape Go |
-| 6. Breadboard | Invoke shape-up:breadboarding | No gaps in play-through |
-| 7. Rabbit Holes | Identify risks, patch each one | Every rabbit hole has a specific patch |
-| 8. Dos and Won't-Dos | Make all scope assumptions explicit | Nothing left to inference |
-| 9. Three Properties | Rough, solved, bounded | All three pass with evidence before writing |
+| 1. Read frame together | Play back problem, appetite, language | User confirms the reading |
+| 2. Requirements | Draft R; propose statuses | User confirms every status |
+| 3. Explore shapes | ≥2 shapes + CURRENT, incl. cheapest-that-passes; fit check | User rejects and picks |
+| 4. Spike unknowns | Investigate ⚠️ in the code | Flags resolved; user re-confirms if shape moved |
+| 5. Breadboard | Wire the chosen shape | No gaps; wiring trade-offs decided by user |
+| 6. Rabbit holes | Hunt risks, propose patches | Every patch user-confirmed |
+| 7. Dos / Won't-dos | Propose exclusions with rationale | User confirms every won't-do |
+| 8. Three properties | Evidence per property + standing questions | **User** declares Shape Go |
+
+Every round: homework → findings → one decision point → wait → record. Standing questions at every decision point: *does it still solve the framed problem — and does the frame say everything we now know?* and *what new problems does it create?* Route every remark: problem-material → frame-delta protocol; solution-material → current phase.

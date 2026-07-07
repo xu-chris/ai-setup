@@ -69,6 +69,8 @@ Question banks and a worked five-whys chain: `references/question-banks.md`.
 
 Someone already feels urgency: a customer at risk, a recurring complaint, a deal being lost. Find it. Then ask for the **appetite signal** before working the topics — how much time is this worth if the problem is real? Appetite constrains the whole conversation and defines what "good enough" means.
 
+Run the **cast check**: "Are you the person who knows this firsthand, or is there someone who does?" If there's a subject-matter expert who lives with the problem, name them now — unanswerable domain questions later will route to that person (pause-for-research), not to guesswork.
+
 **Gate:** A business reason for investigating this *now* is explicit, and appetite is named.
 
 ```
@@ -83,6 +85,8 @@ IF appetite is unnamed → ask before working the topics
 **Operating definition:** a problem is a difference between things as *desired* and things as *perceived*. Every problem has an owner — a perceiver and a desirer. "The metrics say it's fine" does not dissolve a problem someone perceives; phantom problems are real problems. So every topic answer names *whose* desire and *whose* perception.
 
 **Evidence standard:** every topic is backed by at least one reconstructed recent episode or live data. "Users want X" with no nameable user is a label, not evidence. Pausing to run a query or pull past research is normal framing, not a detour.
+
+Inspecting the **current** system — product, code, data — to establish what exists today is evidence-gathering, not solution territory. "Can they see that today? Click through and find out" is framing work; three-clicks-deep-in-reports is a fact about why the problem persists. Solution territory begins where the *future* system gets designed.
 
 Cover all ten topics. The order can follow what the room shows you, but do not declare Frame Go until each has a specific, non-label answer that passed the verdict.
 
@@ -203,7 +207,7 @@ Set `status: frame-go` when Phase 4 passes. Otherwise set `status: candidate` an
 
 **Frame Go means:** "We are aligned on the problem and the outcome, and we understand this enough to shape it."
 
-Frame Go is not permanent. Shaping regularly surfaces questions that cannot be answered without returning to the problem. When it does, return to framing, answer the question, then resume the shape. This is expected.
+Frame Go is not permanent — and that is a feature, not a defect. The frame precedes the shape *logically* (no solution without understanding the problem), not *temporally*: shaping is the sharpest probe the frame ever gets, and it routinely surfaces problem-facts that framing alone could never find. When shaping delivers a frame delta (the shape skill's frame-delta protocol), receive it here without ceremony: the **verdict loop applies to the new material** — evidence-checked like any answer — but the full phase machinery does not re-run. Fold the confirmed delta into the affected sections and Evidence; status stays `frame-go` when the user re-confirms in-session. Only a *large* delta — wrong problem, cost evaporated, wrong segment — drops the frame to `status: candidate` and reopens real framing. The quality bar travels; the ceremony does not.
 
 A compact worked example — "improve the dashboard" narrowed to `payment-recovery`, with the verdict loop and a step-back — is in `references/worked-example.md`.
 
