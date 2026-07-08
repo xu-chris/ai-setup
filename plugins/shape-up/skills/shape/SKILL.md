@@ -153,7 +153,7 @@ Users are often non-technical and won't have set up the workspace — asking for
 
 ## Phase 3: Explore Shapes
 
-**Do:** Homework first — read the relevant code; CURRENT is the baseline shape. Draft **at least two genuinely different shapes** (different trade-offs, not variations); one must be the **cheapest shape that passes the core goal** — making the user argue past it is how they discover what is sufficient. Present with the fit check (binary ✅/❌ per `references/notation.md`), ⚠️ on unknowns, and your recommendation. Decision point: **the user rejects and picks** — one shape offers nothing to reject, so one shape is never enough.
+**Do:** Homework first — establish the real CURRENT baseline by capturing the current-version flow from code, not from assumption: invoke `shape-up:breadboarding` in capture-current mode (its Step 0 — draw the existing flow across every repo it touches, capture the guards, and locate the framed problem on it with the domain expert). That current breadboard is the CURRENT column. Then draft **at least two genuinely different shapes** (different trade-offs, not variations); one must be the **cheapest shape that passes the core goal** — making the user argue past it is how they discover what is sufficient. Present with the fit check (binary ✅/❌ per `references/notation.md`), ⚠️ on unknowns, and your recommendation. Decision point: **the user rejects and picks** — one shape offers nothing to reject, so one shape is never enough.
 
 **Gate:** ≥2 shapes + CURRENT on the table; user picked; pick recorded.
 
@@ -165,7 +165,7 @@ Users are often non-technical and won't have set up the workspace — asking for
 
 ## Phase 5: Breadboard
 
-**Do:** Invoke `shape-up:breadboarding` — entered from here it starts at Step 4 (affordance enumeration); your R, chosen shape, and fit check carry over, do not let it rebuild them. Wiring choices that embed a trade-off (where a flow starts, what stays manual vs. automated) → decision points.
+**Do:** Invoke `shape-up:breadboarding` in draw-alternate mode — it starts at Step 4 (affordance enumeration); your R, chosen shape, fit check, and the Phase-3 current-version breadboard carry over, do not let it rebuild them. The wired alternate must show a ✅ where the current version carried each ⚠️ — an unresolved ⚠️ means this shape does not solve the frame. Wiring choices that embed a trade-off (where a flow starts, what stays manual vs. automated) → decision points.
 
 **Gate:** Play-through gap-free. Breadboard written into shape.md.
 

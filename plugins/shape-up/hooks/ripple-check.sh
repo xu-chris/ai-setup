@@ -10,6 +10,29 @@ Ripple check:
 - Changed slices.md? → Update affected S#-plan.md files
 - Changed an S#-plan.md? → Update the slice summary in slices.md if scope changed
 MSG
+
+    # Advisory breadboard check. If this file carries affordance tables, surface
+    # any referential ERRORs (dangling refs, dead affordances, orphan stores).
+    # Advisory only: it never adds a halt beyond the ripple reminder, and it
+    # leaves WARNs for the Step-4 gate — the edit stands either way. Errors are
+    # expected transiently while the tables are being built row by row; treat
+    # them as a nudge, not a stop.
+    if grep -qE '^\|[[:space:]]*~?[UNPS][0-9]+[[:space:]]*\|' "$FILE"; then
+      HOOK_DIR=$(cd "$(dirname "$0")" && pwd)
+      VALIDATOR="$(dirname "$HOOK_DIR")/skills/breadboarding/scripts/check-tables.sh"
+      if [[ -x "$VALIDATOR" ]]; then
+        OUT=$("$VALIDATOR" "$FILE" 2>/dev/null) || true
+        ERRLINES=$(printf '%s\n' "$OUT" | grep '^ERROR' || true)
+        if [[ -n "$ERRLINES" ]]; then
+          {
+            echo
+            echo "Breadboard table check (scripts/check-tables.sh) — fix before Step 5:"
+            printf '%s\n' "$ERRLINES"
+          } >&2
+        fi
+      fi
+    fi
+
     exit 2
   fi
 fi
